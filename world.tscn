@@ -1,47 +1,56 @@
 [gd_scene format=3 uid="uid://ckavqb25bdaul"]
 
 [ext_resource type="PackedScene" uid="uid://djf7keuxeyyoh" path="res://scenes/ui.tscn" id="1_f3sb7"]
-<<<<<<< Updated upstream
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://sprites/icon.svg" id="1_fj7yv"]
 [ext_resource type="Script" uid="uid://dhle5ahad4cse" path="res://scripts/cameramove.gd" id="2_tlwt5"]
-=======
-[ext_resource type="Script" uid="uid://dhle5ahad4cse" path="res://cameramove.gd" id="2_tlwt5"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://sprites/icon.svg" id="3_tlwt5"]
->>>>>>> Stashed changes
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vddbn"]
+size = Vector2(5176, 388)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jmv0p"]
 
 [node name="World" type="Node2D" unique_id=2085603094]
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1830423451]
-offset_left = -1214.0
-offset_top = -830.0
-offset_right = 1413.0
-offset_bottom = 966.0
-texture = ExtResource("3_tlwt5")
+offset_left = -919.0
+offset_top = -877.0
+offset_right = 1708.0
+offset_bottom = 919.0
 stretch_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1013682925]
 script = ExtResource("2_tlwt5")
 
 [node name="UI" parent="Camera2D" unique_id=464854239 instance=ExtResource("1_f3sb7")]
+z_index = 100
 offset_left = 274.0
 offset_top = -324.0
 offset_right = 274.0
 offset_bottom = -324.0
-<<<<<<< Updated upstream
-=======
+
+[node name="solid" type="StaticBody2D" parent="." unique_id=2057744706]
+
+[node name="floor" type="CollisionShape2D" parent="solid" unique_id=1146851482]
+position = Vector2(240, 194)
+shape = SubResource("RectangleShape2D_vddbn")
+
+[node name="floorSprite" type="Sprite2D" parent="solid/floor" unique_id=1418521922]
+position = Vector2(-3.993511e-06, 0.50001526)
+scale = Vector2(5176, 387.00003)
+texture = SubResource("PlaceholderTexture2D_jmv0p")
 
 [node name="bigGuy" type="Sprite2D" parent="." unique_id=1163431889]
-position = Vector2(-2022, -610)
+position = Vector2(-354, -286.5)
 scale = Vector2(2.8281255, 4.4765625)
 texture = ExtResource("3_tlwt5")
 
 [node name="drill" type="Sprite2D" parent="." unique_id=929776969]
-position = Vector2(-1500, -362)
+position = Vector2(-737.99994, -121)
 scale = Vector2(3.171875, 1.890625)
 texture = ExtResource("3_tlwt5")
 
 [node name="tredmill" type="Sprite2D" parent="." unique_id=349309882]
-position = Vector2(-1526, -86)
+position = Vector2(-1311.0001, -39.000004)
 scale = Vector2(2.984375, 0.609375)
 texture = ExtResource("3_tlwt5")
 
@@ -58,4 +67,3 @@ texture = ExtResource("3_tlwt5")
 position = Vector2(803, -29)
 scale = Vector2(0.15624748, 0.4719848)
 texture = ExtResource("3_tlwt5")
->>>>>>> Stashed changes
