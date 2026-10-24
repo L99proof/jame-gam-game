@@ -2,6 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://cqvcijm1vrp43" path="res://sprites/goobBlue.png" id="2_bdyj2"]
 [ext_resource type="Script" uid="uid://difrqw62s02qc" path="res://scripts/character_body_2d.gd" id="3_o0jrb"]
+[ext_resource type="Texture2D" uid="uid://cewgc5nk0y2hp" path="res://sprites/GoobOrange.png" id="3_shjsn"]
+[ext_resource type="Texture2D" uid="uid://c5ko4f72ibipx" path="res://sprites/GoobP.png" id="4_26rk4"]
+[ext_resource type="Texture2D" uid="uid://b06tl58wpx3nn" path="res://sprites/GoobPink.png" id="5_chkmp"]
+[ext_resource type="Texture2D" uid="uid://d3qy1pil7kdlw" path="res://sprites/GoobPurple.png" id="6_0dv5g"]
+[ext_resource type="Texture2D" uid="uid://cuqtk2llfit3l" path="res://sprites/GoobYellow.png" id="7_jtxbp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vddbn"]
 size = Vector2(70, 72)
@@ -13,19 +18,59 @@ animations = [{
 "texture": ExtResource("2_bdyj2")
 }],
 "loop": 1,
-"name": &"Idle",
+"name": &"IdleBlue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_shjsn")
+}],
+"loop": 1,
+"name": &"IdleOrange",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_26rk4")
+}],
+"loop": 1,
+"name": &"IdleP",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_chkmp")
+}],
+"loop": 1,
+"name": &"IdlePink",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_0dv5g")
+}],
+"loop": 1,
+"name": &"IdlePurple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_jtxbp")
+}],
+"loop": 1,
+"name": &"IdleYellow",
 "speed": 5.0
 }, {
 "frames": [],
 "loop": 1,
-"name": &"walking",
+"name": &"walkingBlue",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tv4mw"]
 size = Vector2(70, 72)
 
-[node name="goob" type="CharacterBody2D" unique_id=33472376 node_paths=PackedStringArray("ray_cast_left", "ray_cast_down", "ray_cast_up", "ray_cast_right", "collision_shape_2d", "area_2d")]
+[node name="goob" type="CharacterBody2D" unique_id=33472376 node_paths=PackedStringArray("ray_cast_left", "ray_cast_down", "ray_cast_up", "ray_cast_right", "collision_shape_2d", "area_2d", "goob_sprite")]
 z_index = 1
 input_pickable = true
 motion_mode = 1
@@ -37,6 +82,7 @@ ray_cast_up = NodePath("RayCastUp")
 ray_cast_right = NodePath("RayCastRight")
 collision_shape_2d = NodePath("CollisionShape2D")
 area_2d = NodePath("Area2D")
+goob_sprite = NodePath("goobSprite")
 
 [node name="RayCastLeft" type="RayCast2D" parent="." unique_id=1554496903]
 scale = Vector2(1, 12)
@@ -62,8 +108,8 @@ target_position = Vector2(36, 0)
 position = Vector2(2.9999993, -11.999998)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_6iawg")
-animation = &"Idle"
-autoplay = "Idle"
+animation = &"walkingBlue"
+autoplay = "IdleBlue"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1198444017]
 

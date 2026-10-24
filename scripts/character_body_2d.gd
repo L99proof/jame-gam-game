@@ -5,16 +5,30 @@ extends CharacterBody2D
 @export var ray_cast_right: RayCast2D
 @export var collision_shape_2d: CollisionShape2D
 @export var area_2d: Area2D
+@export var goob_sprite: AnimatedSprite2D
 
 var stick = false
 var drag
 var mine = false
 var run = false
+var color = randi_range(1,6)
 @export var limit_min: Vector2 = Vector2(-2000, -2000)
 @export var limit_max: Vector2 = Vector2(2000, 2000)
 @onready var parent = get_parent() as PathFollow2D
 var SPEED = randf_range(50,150)
 func _ready() -> void:
+	if color == 1:
+		goob_sprite.animation = "IdleBlue"
+	elif color == 2:
+		goob_sprite.animation = "IdleOrange"
+	elif color == 3:
+		goob_sprite.animation = "IdleP"
+	elif color == 4:
+		goob_sprite.animation = "IdlePink"
+	elif color == 5:
+		goob_sprite.animation = "IdlePurple"
+	elif color == 6:
+		goob_sprite.animation = "IdleYellow"
 	velocity = Vector2(randf_range(-SPEED,SPEED),randf_range(-SPEED,SPEED))
 	
 func _process(delta: float) -> void:
