@@ -2,8 +2,10 @@
 
 [ext_resource type="Theme" uid="uid://bog85i12y501n" path="res://themes/UpgradeMenu.tres" id="1_nt7q6"]
 [ext_resource type="Script" uid="uid://htyirh56y5bx" path="res://scripts/ui.gd" id="1_x4jx1"]
+[ext_resource type="Script" uid="uid://btlh4wrv04rc3" path="res://addons/collapsible_container/collapsible_elements/collapsible_container.gd" id="3_gdt2y"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://sprites/icon.svg" id="4_wm3ai"]
 
-[node name="UI" type="Control" unique_id=464854239 node_paths=PackedStringArray("better_pik_label", "better_pik", "more_pik_label", "more_pik", "drill_label", "drill", "better_drill_label", "more_drill_label", "more_drill", "better_drill", "tredmill_efficiency_label", "tredmill_efficiency")]
+[node name="UI" type="Control" unique_id=464854239 node_paths=PackedStringArray("better_pik_label", "better_pik", "more_pik_label", "more_pik", "drill_label", "drill", "better_drill_label", "more_drill_label", "more_drill", "better_drill", "tredmill_efficiency_label", "tredmill_efficiency", "collapsebutton", "collapsible")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,35 +13,66 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x4jx1")
-better_pik_label = NodePath("Upgrade UI/VBoxContainer/BetterPik/BetterPikLabel")
-better_pik = NodePath("Upgrade UI/VBoxContainer/BetterPik")
-more_pik_label = NodePath("Upgrade UI/VBoxContainer/MorePik/MorePikLabel")
-more_pik = NodePath("Upgrade UI/VBoxContainer/MorePik")
-drill_label = NodePath("Upgrade UI/VBoxContainer/Drill/DrillLabel")
-drill = NodePath("Upgrade UI/VBoxContainer/Drill")
-better_drill_label = NodePath("Upgrade UI/VBoxContainer/BetterDrill/BetterDrillLabel")
-more_drill_label = NodePath("Upgrade UI/VBoxContainer/MoreDrill/MoreDrillLabel")
-more_drill = NodePath("Upgrade UI/VBoxContainer/MoreDrill")
-better_drill = NodePath("Upgrade UI/VBoxContainer/BetterDrill")
-tredmill_efficiency_label = NodePath("Upgrade UI/VBoxContainer/TredmillEfficiency/TredmillEfficiencyLabel")
-tredmill_efficiency = NodePath("Upgrade UI/VBoxContainer/TredmillEfficiency")
+better_pik_label = NodePath("CollapsibleContainer/VBoxContainer/BetterPik/BetterPikLabel")
+better_pik = NodePath("CollapsibleContainer/VBoxContainer/BetterPik")
+more_pik_label = NodePath("CollapsibleContainer/VBoxContainer/MorePik/MorePikLabel")
+more_pik = NodePath("CollapsibleContainer/VBoxContainer/MorePik")
+drill_label = NodePath("CollapsibleContainer/VBoxContainer/Drill/DrillLabel")
+drill = NodePath("CollapsibleContainer/VBoxContainer/Drill")
+better_drill_label = NodePath("CollapsibleContainer/VBoxContainer/BetterDrill/BetterDrillLabel")
+more_drill_label = NodePath("CollapsibleContainer/VBoxContainer/MoreDrill/MoreDrillLabel")
+more_drill = NodePath("CollapsibleContainer/VBoxContainer/MoreDrill")
+better_drill = NodePath("CollapsibleContainer/VBoxContainer/BetterDrill")
+tredmill_efficiency_label = NodePath("CollapsibleContainer/VBoxContainer/TredmillEfficiency/TredmillEfficiencyLabel")
+tredmill_efficiency = NodePath("CollapsibleContainer/VBoxContainer/TredmillEfficiency")
+collapsebutton = NodePath("CollapsibleContainer/OpenClose")
+collapsible = NodePath("CollapsibleContainer")
 
-[node name="Upgrade UI" type="ScrollContainer" parent="." unique_id=1370161092]
+[node name="CollapsibleContainer" type="Control" parent="." unique_id=1097302173]
+process_mode = 3
+editor_description = "Control node capable of hiding and revealing its children by folding and unfolding.
+Give feedback at: https://github.com/ArshvirGoraya/Godot-Collapsible-Container"
+custom_minimum_size = Vector2(266, 434)
+clip_contents = true
+anchors_preset = 0
+offset_left = 7.999999
+offset_top = 6.000001
+offset_right = 274.0
+offset_bottom = 440.0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+script = ExtResource("3_gdt2y")
+folding_direction_preset = 15
+sizing_constraint = 1
+sizing_node = NodePath("TextureRect")
+custom_open_size = Vector2(100, 100)
+use_custom_close_size = true
+custom_close_size = Vector2(0, 25)
+tween_duration_sec = 0.16
+tween_transition_type = 2
+metadata/_custom_type_script = "uid://btlh4wrv04rc3"
+
+[node name="TextureRect" type="TextureRect" parent="CollapsibleContainer" unique_id=733843694]
 layout_mode = 0
-offset_right = 302.0
-offset_bottom = 651.0
-theme = ExtResource("1_nt7q6")
+offset_left = -4.999999
+offset_top = -2.000001
+offset_right = 261.0
+offset_bottom = 432.0
+texture = ExtResource("4_wm3ai")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Upgrade UI" unique_id=409644792]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="CollapsibleContainer" unique_id=1437564033]
+layout_mode = 0
+offset_top = 43.0
+offset_right = 252.0
+offset_bottom = 417.0
 
-[node name="BetterPik" type="Button" parent="Upgrade UI/VBoxContainer" unique_id=286715677]
+[node name="BetterPik" type="Button" parent="CollapsibleContainer/VBoxContainer" unique_id=754435531]
 layout_mode = 2
 theme = ExtResource("1_nt7q6")
-text = "Better pickaxe"
+text = "Upgrade Pickaxe"
 alignment = 0
 
-[node name="BetterPikLabel" type="Label" parent="Upgrade UI/VBoxContainer/BetterPik" unique_id=949299231]
+[node name="BetterPikLabel" type="Label" parent="CollapsibleContainer/VBoxContainer/BetterPik" unique_id=1768027151]
 layout_mode = 0
 offset_left = 225.0
 offset_top = 5.0
@@ -47,12 +80,12 @@ offset_right = 287.0
 offset_bottom = 47.0
 theme = ExtResource("1_nt7q6")
 
-[node name="MorePik" type="Button" parent="Upgrade UI/VBoxContainer" unique_id=320272040]
+[node name="MorePik" type="Button" parent="CollapsibleContainer/VBoxContainer" unique_id=474443004]
 layout_mode = 2
 theme = ExtResource("1_nt7q6")
-text = "More pickaxe"
+text = "More pickaxes"
 
-[node name="MorePikLabel" type="Label" parent="Upgrade UI/VBoxContainer/MorePik" unique_id=690738591]
+[node name="MorePikLabel" type="Label" parent="CollapsibleContainer/VBoxContainer/MorePik" unique_id=721061040]
 layout_mode = 0
 offset_left = 225.0
 offset_top = 5.0
@@ -60,12 +93,12 @@ offset_right = 287.0
 offset_bottom = 47.0
 theme = ExtResource("1_nt7q6")
 
-[node name="Drill" type="Button" parent="Upgrade UI/VBoxContainer" unique_id=863158032]
+[node name="Drill" type="Button" parent="CollapsibleContainer/VBoxContainer" unique_id=812042348]
 layout_mode = 2
 theme = ExtResource("1_nt7q6")
-text = "Drill?"
+text = "Buy a Drill"
 
-[node name="DrillLabel" type="Label" parent="Upgrade UI/VBoxContainer/Drill" unique_id=209164821]
+[node name="DrillLabel" type="Label" parent="CollapsibleContainer/VBoxContainer/Drill" unique_id=1256301576]
 layout_mode = 0
 offset_left = 225.0
 offset_top = 5.0
@@ -73,12 +106,12 @@ offset_right = 287.0
 offset_bottom = 47.0
 theme = ExtResource("1_nt7q6")
 
-[node name="BetterDrill" type="Button" parent="Upgrade UI/VBoxContainer" unique_id=795157146]
+[node name="BetterDrill" type="Button" parent="CollapsibleContainer/VBoxContainer" unique_id=772149692]
 layout_mode = 2
 theme = ExtResource("1_nt7q6")
-text = "Better Drill"
+text = "Upgrade Drill"
 
-[node name="BetterDrillLabel" type="Label" parent="Upgrade UI/VBoxContainer/BetterDrill" unique_id=894352559]
+[node name="BetterDrillLabel" type="Label" parent="CollapsibleContainer/VBoxContainer/BetterDrill" unique_id=669866559]
 layout_mode = 0
 offset_left = 225.0
 offset_top = 5.0
@@ -86,12 +119,12 @@ offset_right = 287.0
 offset_bottom = 47.0
 theme = ExtResource("1_nt7q6")
 
-[node name="MoreDrill" type="Button" parent="Upgrade UI/VBoxContainer" unique_id=171532316]
+[node name="MoreDrill" type="Button" parent="CollapsibleContainer/VBoxContainer" unique_id=111524957]
 layout_mode = 2
 theme = ExtResource("1_nt7q6")
-text = "More Drill"
+text = "More Drills"
 
-[node name="MoreDrillLabel" type="Label" parent="Upgrade UI/VBoxContainer/MoreDrill" unique_id=239321394]
+[node name="MoreDrillLabel" type="Label" parent="CollapsibleContainer/VBoxContainer/MoreDrill" unique_id=1603851299]
 layout_mode = 0
 offset_left = 225.0
 offset_top = 5.0
@@ -99,13 +132,13 @@ offset_right = 287.0
 offset_bottom = 47.0
 theme = ExtResource("1_nt7q6")
 
-[node name="TredmillEfficiency" type="Button" parent="Upgrade UI/VBoxContainer" unique_id=1928679772]
+[node name="TredmillEfficiency" type="Button" parent="CollapsibleContainer/VBoxContainer" unique_id=1621211657]
 layout_mode = 2
 theme = ExtResource("1_nt7q6")
 text = "Tredmill Efficiency"
 autowrap_mode = 3
 
-[node name="TredmillEfficiencyLabel" type="Label" parent="Upgrade UI/VBoxContainer/TredmillEfficiency" unique_id=400437569]
+[node name="TredmillEfficiencyLabel" type="Label" parent="CollapsibleContainer/VBoxContainer/TredmillEfficiency" unique_id=487790072]
 layout_mode = 0
 offset_left = 225.0
 offset_top = 25.0
@@ -113,9 +146,16 @@ offset_right = 287.0
 offset_bottom = 67.0
 theme = ExtResource("1_nt7q6")
 
-[connection signal="pressed" from="Upgrade UI/VBoxContainer/BetterPik" to="." method="_on_better_pik_pressed"]
-[connection signal="pressed" from="Upgrade UI/VBoxContainer/MorePik" to="." method="_on_more_pik_pressed"]
-[connection signal="pressed" from="Upgrade UI/VBoxContainer/Drill" to="." method="_on_drill_pressed"]
-[connection signal="pressed" from="Upgrade UI/VBoxContainer/BetterDrill" to="." method="_on_better_drill_pressed"]
-[connection signal="pressed" from="Upgrade UI/VBoxContainer/MoreDrill" to="." method="_on_more_drill_pressed"]
-[connection signal="pressed" from="Upgrade UI/VBoxContainer/TredmillEfficiency" to="." method="_on_tredmill_efficiency_pressed"]
+[node name="OpenClose" type="Button" parent="CollapsibleContainer" unique_id=1967652659]
+layout_mode = 0
+offset_left = 58.0
+offset_right = 188.0
+offset_bottom = 31.0
+
+[connection signal="pressed" from="CollapsibleContainer/VBoxContainer/BetterPik" to="." method="_on_better_pik_pressed"]
+[connection signal="pressed" from="CollapsibleContainer/VBoxContainer/MorePik" to="." method="_on_more_pik_pressed"]
+[connection signal="pressed" from="CollapsibleContainer/VBoxContainer/Drill" to="." method="_on_drill_pressed"]
+[connection signal="pressed" from="CollapsibleContainer/VBoxContainer/BetterDrill" to="." method="_on_better_drill_pressed"]
+[connection signal="pressed" from="CollapsibleContainer/VBoxContainer/MoreDrill" to="." method="_on_more_drill_pressed"]
+[connection signal="pressed" from="CollapsibleContainer/VBoxContainer/TredmillEfficiency" to="." method="_on_tredmill_efficiency_pressed"]
+[connection signal="pressed" from="CollapsibleContainer/OpenClose" to="." method="_on_open_close_pressed"]
