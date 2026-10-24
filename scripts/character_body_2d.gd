@@ -18,8 +18,6 @@ func _process(delta: float) -> void:
 func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT and mouse_entered and stick == false:
-			print("Left button was clicked at ", event.position)
-			print("dooh")
 			stick = true
 		else: if event.button_index == MOUSE_BUTTON_RIGHT and stick == true:
 			stick = false
