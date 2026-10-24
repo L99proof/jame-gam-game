@@ -13,6 +13,6 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
-		if body.drag == false and Globals.miners:
-			print("MIN")
+		if body.drag == false and Globals.miners<Globals.pik_num:
+			print(3)
 			body.makeMine()

@@ -16,7 +16,9 @@ var shirt = "Blue"
 @export var limit_min: Vector2 = Vector2(-2000, -2000)
 @export var limit_max: Vector2 = Vector2(2000, 2000)
 @onready var parent = get_parent() as PathFollow2D
-var SPEED = randf_range(50,150)
+@export var LowSpeed = 100
+@export var HighSpeed = 200
+var SPEED = randf_range(LowSpeed,HighSpeed)
 func _ready() -> void:
 	if color == 1:
 		shirt = "Blue"
@@ -41,9 +43,11 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT and stick == true:
 			drag = event.pressed
-			if drag == event.pressed and (run == true or mine == true):
+			if drag == event.pressed and run == true:
 				stopRun()
+			if drag == event.pressed and mine == true:
 				stopMine()
+	print(Globals.miners)
 
 func _on_area_2d_mouse_entered() -> void:
 	stick = true 

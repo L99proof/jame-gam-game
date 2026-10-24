@@ -85,6 +85,7 @@ area_2d = NodePath("Area2D")
 goob_sprite = NodePath("goobSprite")
 
 [node name="RayCastLeft" type="RayCast2D" parent="." unique_id=1554496903]
+position = Vector2(-1, 0)
 scale = Vector2(1, 12)
 target_position = Vector2(-36, 0)
 
@@ -92,15 +93,18 @@ target_position = Vector2(-36, 0)
 shape = SubResource("RectangleShape2D_vddbn")
 
 [node name="RayCastDown" type="RayCast2D" parent="." unique_id=414710634]
+position = Vector2(0, 1)
 scale = Vector2(12, 1)
 target_position = Vector2(0, 37)
 hit_from_inside = true
 
 [node name="RayCastUp" type="RayCast2D" parent="." unique_id=1391764431]
+position = Vector2(0, -1)
 scale = Vector2(12, 1)
 target_position = Vector2(0, -37)
 
 [node name="RayCastRight" type="RayCast2D" parent="." unique_id=1406697584]
+position = Vector2(1, 0)
 scale = Vector2(1, 12)
 target_position = Vector2(36, 0)
 
