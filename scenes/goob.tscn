@@ -22,7 +22,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="goob" type="CharacterBody2D" unique_id=33472376 node_paths=PackedStringArray("ray_cast_left", "ray_cast_down", "ray_cast_up", "ray_cast_right", "collision_shape_2d")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tv4mw"]
+size = Vector2(70, 72)
+
+[node name="goob" type="CharacterBody2D" unique_id=33472376 node_paths=PackedStringArray("ray_cast_left", "ray_cast_down", "ray_cast_up", "ray_cast_right", "collision_shape_2d", "area_2d")]
+z_index = 1
 input_pickable = true
 motion_mode = 1
 slide_on_ceiling = false
@@ -32,6 +36,7 @@ ray_cast_down = NodePath("RayCastDown")
 ray_cast_up = NodePath("RayCastUp")
 ray_cast_right = NodePath("RayCastRight")
 collision_shape_2d = NodePath("CollisionShape2D")
+area_2d = NodePath("Area2D")
 
 [node name="RayCastLeft" type="RayCast2D" parent="." unique_id=1554496903]
 scale = Vector2(1, 12)
@@ -60,5 +65,12 @@ sprite_frames = SubResource("SpriteFrames_6iawg")
 animation = &"Idle"
 autoplay = "Idle"
 
+[node name="Area2D" type="Area2D" parent="." unique_id=1198444017]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1131828802]
+shape = SubResource("RectangleShape2D_tv4mw")
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

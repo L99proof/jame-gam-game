@@ -7,6 +7,7 @@ extends Node2D
 @export var drill_3: Sprite2D
 @export var treadshape: CollisionShape2D
 @export var tredmill: Sprite2D
+@export var treadmill: Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,6 +17,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Globals.drill >= 1:
+		treadmill.set_deferred("monitoring", true)
 		treadshape.set_deferred("disabled", false)
 		tredmill.set_deferred("visible", true)
 		drillshape.set_deferred("disabled", false)
@@ -26,7 +28,3 @@ func _process(delta: float) -> void:
 	if Globals.drill >= 3:
 		drillshape_3.set_deferred("disabled", false)
 		drill_3.set_deferred("visible", true)
-
-
-func _on_mine_stand_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
