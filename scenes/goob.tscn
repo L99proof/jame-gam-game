@@ -1,3 +1,57 @@
 [gd_scene format=3 uid="uid://dmaa8vb3g4j4u"]
 
-[node name="goob" type="Node2D" unique_id=1422091004]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://sprites/icon.svg" id="1_k4o35"]
+[ext_resource type="Script" uid="uid://difrqw62s02qc" path="res://scripts/character_body_2d.gd" id="3_o0jrb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vddbn"]
+size = Vector2(70, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6iawg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k4o35")
+}],
+"loop": 1,
+"name": &"standing",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[node name="goob" type="CharacterBody2D" unique_id=33472376 node_paths=PackedStringArray("ray_cast_left", "ray_cast_down", "ray_cast_up", "ray_cast_right", "collision_shape_2d")]
+input_pickable = true
+motion_mode = 1
+slide_on_ceiling = false
+script = ExtResource("3_o0jrb")
+ray_cast_left = NodePath("RayCastLeft")
+ray_cast_down = NodePath("RayCastDown")
+ray_cast_up = NodePath("RayCastUp")
+ray_cast_right = NodePath("RayCastRight")
+collision_shape_2d = NodePath("CollisionShape2D")
+
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=1554496903]
+target_position = Vector2(-36, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=805979276]
+shape = SubResource("RectangleShape2D_vddbn")
+
+[node name="RayCastDown" type="RayCast2D" parent="." unique_id=414710634]
+target_position = Vector2(0, 37)
+hit_from_inside = true
+
+[node name="RayCastUp" type="RayCast2D" parent="." unique_id=1391764431]
+target_position = Vector2(0, -37)
+
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=1406697584]
+target_position = Vector2(36, 0)
+
+[node name="goobSprite" type="AnimatedSprite2D" parent="." unique_id=1380003772]
+position = Vector2(-4.7683716e-07, 0)
+scale = Vector2(0.546875, 0.5625)
+sprite_frames = SubResource("SpriteFrames_6iawg")
+animation = &"standing"
+autoplay = "standing"
