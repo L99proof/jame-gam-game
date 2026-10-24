@@ -23,6 +23,15 @@ size = Vector2(191, 97)
 
 [node name="World" type="Node2D" unique_id=2085603094]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1083738139]
+
+[node name="UI" parent="CanvasLayer" unique_id=464854239 instance=ExtResource("1_f3sb7")]
+z_index = 100
+offset_left = 274.0
+offset_top = -324.0
+offset_right = 274.0
+offset_bottom = -324.0
+
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1830423451]
 offset_left = -6216.0
 offset_top = -4017.0
@@ -34,13 +43,6 @@ stretch_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1013682925]
 script = ExtResource("2_tlwt5")
-
-[node name="UI" parent="Camera2D" unique_id=464854239 instance=ExtResource("1_f3sb7")]
-z_index = 100
-offset_left = 274.0
-offset_top = -324.0
-offset_right = 274.0
-offset_bottom = -324.0
 
 [node name="solid" type="StaticBody2D" parent="." unique_id=2057744706]
 
