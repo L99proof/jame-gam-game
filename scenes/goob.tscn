@@ -68,7 +68,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tv4mw"]
-size = Vector2(114, 98)
+size = Vector2(70, 72)
 
 [node name="goob" type="CharacterBody2D" unique_id=33472376 node_paths=PackedStringArray("ray_cast_left", "ray_cast_down", "ray_cast_up", "ray_cast_right", "collision_shape_2d", "area_2d", "goob_sprite")]
 z_index = 1
@@ -118,7 +118,6 @@ autoplay = "IdleBlue"
 [node name="Area2D" type="Area2D" parent="." unique_id=1198444017]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1131828802]
-position = Vector2(-22, -13)
 shape = SubResource("RectangleShape2D_tv4mw")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

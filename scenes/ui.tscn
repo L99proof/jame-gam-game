@@ -9,8 +9,31 @@
 [ext_resource type="Script" path="res://treadmill.gd" id="7_vsj0x"]
 [ext_resource type="PackedScene" uid="uid://djf7keuxeyyoh" path="res://scenes/ui.tscn" id="8_qsv74"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tv4mw"]
-size = Vector2(58.5625, 1134.75)
+[node name="UI" type="Control" unique_id=464854239 node_paths=PackedStringArray("better_pik_label", "better_pik", "more_pik_label", "more_pik", "drill_label", "drill", "better_drill_label", "more_drill_label", "more_drill", "better_drill", "tredmill_efficiency_label", "tredmill_efficiency", "collapsebutton", "collapsible")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_right = -881.0
+offset_bottom = -207.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x4jx1")
+better_pik_label = NodePath("CollapsibleContainer/VBoxContainer/BetterPik/BetterPikLabel")
+better_pik = NodePath("CollapsibleContainer/VBoxContainer/BetterPik")
+more_pik_label = NodePath("CollapsibleContainer/VBoxContainer/MorePik/MorePikLabel")
+more_pik = NodePath("CollapsibleContainer/VBoxContainer/MorePik")
+drill_label = NodePath("CollapsibleContainer/VBoxContainer/Drill/DrillLabel")
+drill = NodePath("CollapsibleContainer/VBoxContainer/Drill")
+better_drill_label = NodePath("CollapsibleContainer/VBoxContainer/BetterDrill/BetterDrillLabel")
+more_drill_label = NodePath("CollapsibleContainer/VBoxContainer/MoreDrill/MoreDrillLabel")
+more_drill = NodePath("CollapsibleContainer/VBoxContainer/MoreDrill")
+better_drill = NodePath("CollapsibleContainer/VBoxContainer/BetterDrill")
+tredmill_efficiency_label = NodePath("CollapsibleContainer/VBoxContainer/TredmillEfficiency/TredmillEfficiencyLabel")
+tredmill_efficiency = NodePath("CollapsibleContainer/VBoxContainer/TredmillEfficiency")
+collapsebutton = NodePath("CollapsibleContainer/OpenClose")
+collapsible = NodePath("CollapsibleContainer")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqk2v"]
 size = Vector2(1888.2813, 125)
