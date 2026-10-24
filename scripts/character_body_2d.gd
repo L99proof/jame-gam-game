@@ -12,23 +12,25 @@ var drag
 var mine = false
 var run = false
 var color = randi_range(1,6)
+var shirt = "Blue"
 @export var limit_min: Vector2 = Vector2(-2000, -2000)
 @export var limit_max: Vector2 = Vector2(2000, 2000)
 @onready var parent = get_parent() as PathFollow2D
 var SPEED = randf_range(50,150)
 func _ready() -> void:
 	if color == 1:
-		goob_sprite.animation = "IdleBlue"
+		shirt = "Blue"
 	elif color == 2:
-		goob_sprite.animation = "IdleOrange"
+		shirt = "Orange"
 	elif color == 3:
-		goob_sprite.animation = "IdleP"
+		shirt = "P"
 	elif color == 4:
-		goob_sprite.animation = "IdlePink"
+		shirt = "Pink"
 	elif color == 5:
-		goob_sprite.animation = "IdlePurple"
+		shirt = "Purple"
 	elif color == 6:
-		goob_sprite.animation = "IdleYellow"
+		shirt = "Yellow"
+	goob_sprite.animation = "Idle" + shirt
 	velocity = Vector2(randf_range(-SPEED,SPEED),randf_range(-SPEED,SPEED))
 	
 func _process(delta: float) -> void:
@@ -38,7 +40,7 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT and stick == true:
-			drag = event.pressed
+			drag = event.presed
 			if drag == event.pressed and (run == true or mine == true):
 				stopRun()
 				stopMine()
@@ -58,6 +60,14 @@ func _physics_process(delta: float) -> void:
 			velocity.y += SPEED
 		if ray_cast_left.is_colliding():
 			velocity.x += SPEED
+	if velocity.x < 0:
+		goob_sprite.flip_h = true
+		#goob_sprite.animation = "Walking" + shirt
+	elif velocity.x >0:
+		goob_sprite.flip_h = false
+		#goob_sprite.animation = "Walking" + shirt
+	else:
+		goob_sprite.animation = "Idle" + shirt
 	move_and_slide()
 
 func makeMine() -> void:

@@ -63,7 +63,7 @@ animations = [{
 }, {
 "frames": [],
 "loop": 1,
-"name": &"walkingBlue",
+"name": &"WalkingBlue",
 "speed": 5.0
 }]
 
@@ -108,7 +108,7 @@ target_position = Vector2(36, 0)
 position = Vector2(2.9999993, -11.999998)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_6iawg")
-animation = &"walkingBlue"
+animation = &"WalkingBlue"
 autoplay = "IdleBlue"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1198444017]
