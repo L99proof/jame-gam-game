@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT and stick == true:
-			drag = event.presed
+			drag = event.pressed
 			if drag == event.pressed and (run == true or mine == true):
 				stopRun()
 				stopMine()
