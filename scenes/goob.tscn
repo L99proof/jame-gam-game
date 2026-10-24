@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dmaa8vb3g4j4u"]
 
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://sprites/icon.svg" id="1_k4o35"]
+[ext_resource type="Texture2D" uid="uid://cqvcijm1vrp43" path="res://sprites/goobBlue.png" id="2_bdyj2"]
 [ext_resource type="Script" uid="uid://difrqw62s02qc" path="res://scripts/character_body_2d.gd" id="3_o0jrb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vddbn"]
@@ -10,10 +10,10 @@ size = Vector2(70, 72)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_k4o35")
+"texture": ExtResource("2_bdyj2")
 }],
 "loop": 1,
-"name": &"standing",
+"name": &"Idle",
 "speed": 5.0
 }, {
 "frames": [],
@@ -34,24 +34,31 @@ ray_cast_right = NodePath("RayCastRight")
 collision_shape_2d = NodePath("CollisionShape2D")
 
 [node name="RayCastLeft" type="RayCast2D" parent="." unique_id=1554496903]
+scale = Vector2(1, 12)
 target_position = Vector2(-36, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=805979276]
 shape = SubResource("RectangleShape2D_vddbn")
 
 [node name="RayCastDown" type="RayCast2D" parent="." unique_id=414710634]
+scale = Vector2(12, 1)
 target_position = Vector2(0, 37)
 hit_from_inside = true
 
 [node name="RayCastUp" type="RayCast2D" parent="." unique_id=1391764431]
+scale = Vector2(12, 1)
 target_position = Vector2(0, -37)
 
 [node name="RayCastRight" type="RayCast2D" parent="." unique_id=1406697584]
+scale = Vector2(1, 12)
 target_position = Vector2(36, 0)
 
 [node name="goobSprite" type="AnimatedSprite2D" parent="." unique_id=1380003772]
-position = Vector2(-4.7683716e-07, 0)
-scale = Vector2(0.546875, 0.5625)
+position = Vector2(2.9999993, -11.999998)
+scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_6iawg")
-animation = &"standing"
-autoplay = "standing"
+animation = &"Idle"
+autoplay = "Idle"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

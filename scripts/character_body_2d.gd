@@ -5,24 +5,27 @@ extends CharacterBody2D
 @export var ray_cast_right: RayCast2D
 @export var collision_shape_2d: CollisionShape2D
 var stick = false
-
-const SPEED = 100
+var drag
+@export var limit_min: Vector2 = Vector2(-2000, -2000)
+@export var limit_max: Vector2 = Vector2(2000, 2000)
+var SPEED = randf_range(50,150)
 func _ready() -> void:
 	velocity = Vector2(randf_range(-SPEED,SPEED),randf_range(-SPEED,SPEED))
 	
-	
 func _process(delta: float) -> void:
-	if stick == true:
-		position = get_global_mouse_position()
-		velocity = Vector2(randf_range(-SPEED,SPEED),randf_range(-SPEED,SPEED))
-	
-func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
+	if drag == true:
+		position = get_global_mouse_position().clamp(limit_min, limit_max)
+		velocity = Input.get_last_mouse_velocity()
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT and mouse_entered and stick == false:
-			stick = true
-		else: if event.button_index == MOUSE_BUTTON_RIGHT and stick == true:
-			stick = false
-
+		if event.button_index == MOUSE_BUTTON_RIGHT and stick == true:
+			drag = event.pressed
+func _on_mouse_entered() -> void:
+	stick = true 
+	print("in")
+func _on_mouse_exited() -> void:
+	stick = false
+	print("out")
 func _physics_process(delta: float) -> void:
 	if ray_cast_down.is_colliding():
 		velocity.y += -SPEED
