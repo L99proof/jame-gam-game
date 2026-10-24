@@ -20,12 +20,9 @@ func _process(delta: float) -> void:
 		tredmill.set_deferred("visible", true)
 		drillshape.set_deferred("disabled", false)
 		drill.set_deferred("visible", true)
-		print("1!")
 	if Globals.drill >= 2:
 		drillshape_2.set_deferred("disabled", false)
 		drill_2.set_deferred("visible", true)
-		print("2!")
 	if Globals.drill >= 3:
 		drillshape_3.set_deferred("disabled", false)
 		drill_3.set_deferred("visible", true)
-		print("3!")

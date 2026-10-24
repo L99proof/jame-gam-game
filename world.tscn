@@ -113,6 +113,7 @@ texture = ExtResource("3_tlwt5")
 [node name="treadshape" type="CollisionShape2D" parent="solid" unique_id=1528399160]
 position = Vector2(-244.5, 306.5)
 shape = SubResource("RectangleShape2D_bjpuc")
+disabled = true
 
 [node name="tredmill" type="Sprite2D" parent="solid/treadshape" unique_id=349309882]
 visible = false
