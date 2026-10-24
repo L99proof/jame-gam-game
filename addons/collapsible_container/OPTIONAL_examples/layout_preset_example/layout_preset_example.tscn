@@ -1,0 +1,249 @@
+[gd_scene load_steps=8 format=3 uid="uid://w7eims8inl4p"]
+
+[ext_resource type="Script" path="res://addons/collapsible_container/collapsible_elements/collapsible_container.gd" id="1_c8ira"]
+[ext_resource type="Script" path="res://addons/collapsible_container/OPTIONAL_examples/layout_preset_example/layout_logic.gd" id="2_68f11"]
+[ext_resource type="Texture2D" uid="uid://c8bb7uyoxdtj4" path="res://addons/collapsible_container/collapsible_elements/collapsible_container.svg" id="3_tq7iw"]
+[ext_resource type="Script" path="res://addons/collapsible_container/OPTIONAL_examples/layout_preset_example/unfold_behind_example.gd" id="4_05akc"]
+
+[sub_resource type="Theme" id="Theme_oi18m"]
+default_font_size = 25
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0h2ny"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iiqxk"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_oi18m")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="LeftPanel" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/LeftPanel"]
+layout_mode = 2
+color = Color(0.117647, 0.2, 0.329412, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftPanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/LeftPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "LayoutPreset: 
+Container Sizing"
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/LeftPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 5
+
+[node name="margin" type="MarginContainer" parent="HBoxContainer/LeftPanel/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="CollapsibleContainer" type="Control" parent="HBoxContainer/LeftPanel/VBoxContainer/GridContainer/margin"]
+process_mode = 3
+editor_description = "Control node capable of hiding and revealing its children by folding and unfolding.
+Give feedback at: https://github.com/ArshvirGoraya/Godot-Collapsible-Container"
+clip_contents = true
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_c8ira")
+auto_update_size = 0
+sizing_node = NodePath("TextureButton")
+custom_open_size = Vector2(200, 200)
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/LeftPanel/VBoxContainer/GridContainer/margin/CollapsibleContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer/LeftPanel/VBoxContainer/GridContainer/margin/CollapsibleContainer"]
+material = SubResource("CanvasItemMaterial_0h2ny")
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -200.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = SubResource("CompressedTexture2D_iiqxk")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="Logic" type="Node" parent="HBoxContainer/LeftPanel/VBoxContainer/GridContainer/margin/CollapsibleContainer" node_paths=PackedStringArray("collapsible", "texture_button", "anchor_label")]
+script = ExtResource("2_68f11")
+collapsible = NodePath("..")
+texture_button = NodePath("../TextureButton")
+anchor_label = NodePath("../../../../Label")
+
+[node name="Continuous" type="Button" parent="HBoxContainer/LeftPanel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Continuous"
+
+[node name="Toggle" type="Button" parent="HBoxContainer/LeftPanel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Toggle"
+
+[node name="Image" type="Button" parent="HBoxContainer/LeftPanel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Image"
+
+[node name="Anchor" type="Button" parent="HBoxContainer/LeftPanel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Anchor"
+
+[node name="RightPanel" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/RightPanel"]
+layout_mode = 2
+color = Color(0.12549, 0.211765, 0.345098, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/RightPanel/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = -150.0
+offset_right = 155.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/RightPanel/ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Another use!"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/RightPanel/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer/RightPanel/ColorRect/VBoxContainer/MarginContainer" node_paths=PackedStringArray("collapse_top", "collapse_bot")]
+custom_minimum_size = Vector2(225, 225)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_tq7iw")
+stretch_mode = 0
+script = ExtResource("4_05akc")
+collapse_top = NodePath("MarginContainer/CollapsibleContainer")
+collapse_bot = NodePath("MarginContainer2/CollapsibleContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/RightPanel/ColorRect/VBoxContainer/MarginContainer/TextureButton"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CollapsibleContainer" type="Control" parent="HBoxContainer/RightPanel/ColorRect/VBoxContainer/MarginContainer/TextureButton/MarginContainer"]
+process_mode = 3
+editor_description = "Control node capable of hiding and revealing its children by folding and unfolding.
+Give feedback at: https://github.com/ArshvirGoraya/Godot-Collapsible-Container"
+clip_contents = true
+custom_minimum_size = Vector2(180, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 1
+script = ExtResource("1_c8ira")
+starts_opened = false
+folding_direction_preset = 10
+sizing_constraint = 1
+sizing_node = NodePath("ColorRect")
+metadata/_custom_type_script = "uid://btlh4wrv04rc3"
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/RightPanel/ColorRect/VBoxContainer/MarginContainer/TextureButton/MarginContainer/CollapsibleContainer"]
+custom_minimum_size = Vector2(180, 40)
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 40.0
+mouse_filter = 1
+color = Color(0.034041, 0.423529, 0, 1)
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/RightPanel/ColorRect/VBoxContainer/MarginContainer/TextureButton"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CollapsibleContainer" type="Control" parent="HBoxContainer/RightPanel/ColorRect/VBoxContainer/MarginContainer/TextureButton/MarginContainer2"]
+process_mode = 3
+editor_description = "Control node capable of hiding and revealing its children by folding and unfolding.
+Give feedback at: https://github.com/ArshvirGoraya/Godot-Collapsible-Container"
+clip_contents = true
+custom_minimum_size = Vector2(180, 90)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 1
+script = ExtResource("1_c8ira")
+starts_opened = false
+folding_direction_preset = 10
+sizing_constraint = 1
+sizing_node = NodePath("ColorRect")
+metadata/_custom_type_script = "uid://btlh4wrv04rc3"
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/RightPanel/ColorRect/VBoxContainer/MarginContainer/TextureButton/MarginContainer2/CollapsibleContainer"]
+custom_minimum_size = Vector2(180, 90)
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 40.0
+mouse_filter = 1
+color = Color(0.0352941, 0.423529, 0, 1)
+
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/GridContainer/Continuous" to="HBoxContainer/LeftPanel/VBoxContainer/GridContainer/margin/CollapsibleContainer/Logic" method="continous_pressed"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/GridContainer/Toggle" to="HBoxContainer/LeftPanel/VBoxContainer/GridContainer/margin/CollapsibleContainer/Logic" method="toggle_collapsible"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/GridContainer/Image" to="HBoxContainer/LeftPanel/VBoxContainer/GridContainer/margin/CollapsibleContainer/Logic" method="change_visual"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/GridContainer/Anchor" to="HBoxContainer/LeftPanel/VBoxContainer/GridContainer/margin/CollapsibleContainer/Logic" method="change_anchor"]
+[connection signal="pressed" from="HBoxContainer/RightPanel/ColorRect/VBoxContainer/MarginContainer/TextureButton" to="HBoxContainer/RightPanel/ColorRect/VBoxContainer/MarginContainer/TextureButton" method="_on_pressed"]
+[connection signal="tween_completed" from="HBoxContainer/RightPanel/ColorRect/VBoxContainer/MarginContainer/TextureButton/MarginContainer/CollapsibleContainer" to="HBoxContainer/RightPanel/ColorRect/VBoxContainer/MarginContainer/TextureButton" method="_on_collapsible_container_top_tween_completed"]
