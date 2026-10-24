@@ -24,10 +24,10 @@ size = Vector2(191, 97)
 [node name="World" type="Node2D" unique_id=2085603094]
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1830423451]
-offset_left = -3433.0
-offset_top = -2366.0
-offset_right = 2433.0
-offset_bottom = 1743.0
+offset_left = -6216.0
+offset_top = -4017.0
+offset_right = 6588.0
+offset_bottom = 4929.0
 texture = ExtResource("1_aqk2v")
 expand_mode = 3
 stretch_mode = 1
