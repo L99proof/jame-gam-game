@@ -1,161 +1,177 @@
 [gd_scene format=3 uid="uid://djf7keuxeyyoh"]
 
-[ext_resource type="Theme" uid="uid://bog85i12y501n" path="res://themes/UpgradeMenu.tres" id="1_nt7q6"]
-[ext_resource type="Script" uid="uid://htyirh56y5bx" path="res://scripts/ui.gd" id="1_x4jx1"]
-[ext_resource type="Script" uid="uid://btlh4wrv04rc3" path="res://addons/collapsible_container/collapsible_elements/collapsible_container.gd" id="3_gdt2y"]
+[ext_resource type="Script" path="res://world.gd" id="1_ktti3"]
+[ext_resource type="Texture2D" uid="uid://b7m681ciuwwn7" path="res://sprites/grass.jpg" id="2_cgfq5"]
+[ext_resource type="Script" uid="uid://dhle5ahad4cse" path="res://scripts/cameramove.gd" id="3_7dvkv"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://sprites/icon.svg" id="4_wm3ai"]
+[ext_resource type="PackedScene" uid="uid://dmaa8vb3g4j4u" path="res://scenes/goob.tscn" id="5_vdcm2"]
+[ext_resource type="Script" path="res://scripts/mine_stand.gd" id="6_6rmj2"]
+[ext_resource type="Script" path="res://treadmill.gd" id="7_vsj0x"]
+[ext_resource type="PackedScene" uid="uid://djf7keuxeyyoh" path="res://scenes/ui.tscn" id="8_qsv74"]
 
-[node name="UI" type="Control" unique_id=464854239 node_paths=PackedStringArray("better_pik_label", "better_pik", "more_pik_label", "more_pik", "drill_label", "drill", "better_drill_label", "more_drill_label", "more_drill", "better_drill", "tredmill_efficiency_label", "tredmill_efficiency", "collapsebutton", "collapsible")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_x4jx1")
-better_pik_label = NodePath("CollapsibleContainer/VBoxContainer/BetterPik/BetterPikLabel")
-better_pik = NodePath("CollapsibleContainer/VBoxContainer/BetterPik")
-more_pik_label = NodePath("CollapsibleContainer/VBoxContainer/MorePik/MorePikLabel")
-more_pik = NodePath("CollapsibleContainer/VBoxContainer/MorePik")
-drill_label = NodePath("CollapsibleContainer/VBoxContainer/Drill/DrillLabel")
-drill = NodePath("CollapsibleContainer/VBoxContainer/Drill")
-better_drill_label = NodePath("CollapsibleContainer/VBoxContainer/BetterDrill/BetterDrillLabel")
-more_drill_label = NodePath("CollapsibleContainer/VBoxContainer/MoreDrill/MoreDrillLabel")
-more_drill = NodePath("CollapsibleContainer/VBoxContainer/MoreDrill")
-better_drill = NodePath("CollapsibleContainer/VBoxContainer/BetterDrill")
-tredmill_efficiency_label = NodePath("CollapsibleContainer/VBoxContainer/TredmillEfficiency/TredmillEfficiencyLabel")
-tredmill_efficiency = NodePath("CollapsibleContainer/VBoxContainer/TredmillEfficiency")
-collapsebutton = NodePath("CollapsibleContainer/OpenClose")
-collapsible = NodePath("CollapsibleContainer")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tv4mw"]
+size = Vector2(58.5625, 1134.75)
 
-[node name="CollapsibleContainer" type="Control" parent="." unique_id=1097302173]
-process_mode = 3
-editor_description = "Control node capable of hiding and revealing its children by folding and unfolding.
-Give feedback at: https://github.com/ArshvirGoraya/Godot-Collapsible-Container"
-custom_minimum_size = Vector2(266, 434)
-clip_contents = true
-anchors_preset = 0
-offset_left = 7.999999
-offset_top = 6.000001
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqk2v"]
+size = Vector2(1888.2813, 125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vddbn"]
+size = Vector2(377, 504)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmv0p"]
+size = Vector2(87, 156)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65g8g"]
+size = Vector2(129, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjpuc"]
+size = Vector2(191, 97)
+
+[node name="World" type="Node2D" unique_id=2085603094 node_paths=PackedStringArray("drillshape", "drill", "drillshape_2", "drill_2", "drillshape_3", "drill_3", "treadshape", "tredmill", "treadmill")]
+script = ExtResource("1_ktti3")
+drillshape = NodePath("solid/drillshape")
+drill = NodePath("solid/drillshape/drill")
+drillshape_2 = NodePath("solid/drillshape2")
+drill_2 = NodePath("solid/drillshape2/drill2")
+drillshape_3 = NodePath("solid/drillshape3")
+drill_3 = NodePath("solid/drillshape3/drill3")
+treadshape = NodePath("Treadmill/treadshape")
+tredmill = NodePath("Treadmill/treadshape/tredmill")
+treadmill = NodePath("Treadmill")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1083738139]
+layer = 2
+
+[node name="UI" parent="CanvasLayer" unique_id=464854239 instance=ExtResource("8_qsv74")]
+z_index = 100
+offset_left = 274.0
+offset_top = -324.0
 offset_right = 274.0
-offset_bottom = 440.0
-size_flags_horizontal = 3
-size_flags_vertical = 8
-script = ExtResource("3_gdt2y")
-folding_direction_preset = 15
-sizing_constraint = 1
-sizing_node = NodePath("TextureRect")
-custom_open_size = Vector2(100, 100)
-use_custom_close_size = true
-custom_close_size = Vector2(0, 25)
-tween_duration_sec = 0.16
-tween_transition_type = 2
-metadata/_custom_type_script = "uid://btlh4wrv04rc3"
+offset_bottom = -324.0
+metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="CollapsibleContainer" unique_id=733843694]
-layout_mode = 0
-offset_left = -4.999999
-offset_top = -2.000001
-offset_right = 261.0
-offset_bottom = 432.0
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1830423451]
+offset_left = -6216.0
+offset_top = -4017.0
+offset_right = 6588.0
+offset_bottom = 4929.0
+texture = ExtResource("2_cgfq5")
+expand_mode = 3
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1013682925]
+zoom = Vector2(0.345, 0.345)
+script = ExtResource("3_7dvkv")
+
+[node name="solid" type="StaticBody2D" parent="." unique_id=2057744706]
+
+[node name="fence2" type="CollisionShape2D" parent="solid" unique_id=539559856 groups=["walls"]]
+position = Vector2(-3000, 0)
+scale = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_tv4mw")
+
+[node name="fence2sprite" type="Sprite2D" parent="solid/fence2" unique_id=1527351140 groups=["walls"]]
+scale = Vector2(0.15624748, 0.4719848)
 texture = ExtResource("4_wm3ai")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CollapsibleContainer" unique_id=1437564033]
-layout_mode = 0
-offset_top = 43.0
-offset_right = 252.0
-offset_bottom = 417.0
+[node name="fence4" type="CollisionShape2D" parent="solid" unique_id=900731151 groups=["walls"]]
+position = Vector2(3000, 0)
+scale = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_tv4mw")
 
-[node name="BetterPik" type="Button" parent="CollapsibleContainer/VBoxContainer" unique_id=754435531]
-layout_mode = 2
-theme = ExtResource("1_nt7q6")
-text = "Upgrade Pickaxe"
-alignment = 0
+[node name="fence2sprite" type="Sprite2D" parent="solid/fence4" unique_id=1977973383]
+scale = Vector2(0.15624748, 0.4719848)
+texture = ExtResource("4_wm3ai")
 
-[node name="BetterPikLabel" type="Label" parent="CollapsibleContainer/VBoxContainer/BetterPik" unique_id=1768027151]
-layout_mode = 0
-offset_left = 225.0
-offset_top = 5.0
-offset_right = 287.0
-offset_bottom = 47.0
-theme = ExtResource("1_nt7q6")
+[node name="fence3" type="CollisionShape2D" parent="solid" unique_id=582304332 groups=["walls"]]
+position = Vector2(0, -2000)
+scale = Vector2(5, 1)
+shape = SubResource("RectangleShape2D_aqk2v")
 
-[node name="MorePik" type="Button" parent="CollapsibleContainer/VBoxContainer" unique_id=474443004]
-layout_mode = 2
-theme = ExtResource("1_nt7q6")
-text = "More pickaxes"
+[node name="fence2sprite" type="Sprite2D" parent="solid/fence3" unique_id=1113859505]
+scale = Vector2(0.15624748, 0.4719848)
+texture = ExtResource("4_wm3ai")
 
-[node name="MorePikLabel" type="Label" parent="CollapsibleContainer/VBoxContainer/MorePik" unique_id=721061040]
-layout_mode = 0
-offset_left = 225.0
-offset_top = 5.0
-offset_right = 287.0
-offset_bottom = 47.0
-theme = ExtResource("1_nt7q6")
+[node name="fence5" type="CollisionShape2D" parent="solid" unique_id=98384616 groups=["walls"]]
+position = Vector2(0, 2000)
+scale = Vector2(5, 1)
+shape = SubResource("RectangleShape2D_aqk2v")
 
-[node name="Drill" type="Button" parent="CollapsibleContainer/VBoxContainer" unique_id=812042348]
-layout_mode = 2
-theme = ExtResource("1_nt7q6")
-text = "Buy a Drill"
+[node name="fence2sprite" type="Sprite2D" parent="solid/fence5" unique_id=90993576]
+scale = Vector2(0.15624748, 0.4719848)
+texture = ExtResource("4_wm3ai")
 
-[node name="DrillLabel" type="Label" parent="CollapsibleContainer/VBoxContainer/Drill" unique_id=1256301576]
-layout_mode = 0
-offset_left = 225.0
-offset_top = 5.0
-offset_right = 287.0
-offset_bottom = 47.0
-theme = ExtResource("1_nt7q6")
+[node name="guyshape" type="CollisionShape2D" parent="solid" unique_id=1332950676]
+position = Vector2(-562, -311)
+shape = SubResource("RectangleShape2D_vddbn")
 
-[node name="BetterDrill" type="Button" parent="CollapsibleContainer/VBoxContainer" unique_id=772149692]
-layout_mode = 2
-theme = ExtResource("1_nt7q6")
-text = "Upgrade Drill"
+[node name="bigGuy" type="Sprite2D" parent="solid/guyshape" unique_id=1163431889]
+position = Vector2(-0.5, -1)
+scale = Vector2(2.929688, 3.953125)
+texture = ExtResource("4_wm3ai")
 
-[node name="BetterDrillLabel" type="Label" parent="CollapsibleContainer/VBoxContainer/BetterDrill" unique_id=669866559]
-layout_mode = 0
-offset_left = 225.0
-offset_top = 5.0
-offset_right = 287.0
-offset_bottom = 47.0
-theme = ExtResource("1_nt7q6")
+[node name="drillshape" type="CollisionShape2D" parent="solid" unique_id=1458447829]
+position = Vector2(-666, 20)
+shape = SubResource("RectangleShape2D_jmv0p")
+disabled = true
 
-[node name="MoreDrill" type="Button" parent="CollapsibleContainer/VBoxContainer" unique_id=111524957]
-layout_mode = 2
-theme = ExtResource("1_nt7q6")
-text = "More Drills"
+[node name="drill" type="Sprite2D" parent="solid/drillshape" unique_id=929776969]
+visible = false
+position = Vector2(-0.1875, -0.99998474)
+scale = Vector2(0.6826176, 1.2304688)
+texture = ExtResource("4_wm3ai")
 
-[node name="MoreDrillLabel" type="Label" parent="CollapsibleContainer/VBoxContainer/MoreDrill" unique_id=1603851299]
-layout_mode = 0
-offset_left = 225.0
-offset_top = 5.0
-offset_right = 287.0
-offset_bottom = 47.0
-theme = ExtResource("1_nt7q6")
+[node name="drillshape2" type="CollisionShape2D" parent="solid" unique_id=1376050983]
+position = Vector2(-563.5, 20)
+shape = SubResource("RectangleShape2D_jmv0p")
+disabled = true
 
-[node name="TredmillEfficiency" type="Button" parent="CollapsibleContainer/VBoxContainer" unique_id=1621211657]
-layout_mode = 2
-theme = ExtResource("1_nt7q6")
-text = "Tredmill Efficiency"
-autowrap_mode = 3
+[node name="drill2" type="Sprite2D" parent="solid/drillshape2" unique_id=1463705783]
+visible = false
+position = Vector2(-0.1875, -0.99998474)
+scale = Vector2(0.6826176, 1.2304688)
+texture = ExtResource("4_wm3ai")
 
-[node name="TredmillEfficiencyLabel" type="Label" parent="CollapsibleContainer/VBoxContainer/TredmillEfficiency" unique_id=487790072]
-layout_mode = 0
-offset_left = 225.0
-offset_top = 25.0
-offset_right = 287.0
-offset_bottom = 67.0
-theme = ExtResource("1_nt7q6")
+[node name="drillshape3" type="CollisionShape2D" parent="solid" unique_id=1054299462]
+position = Vector2(-461.5, 20)
+shape = SubResource("RectangleShape2D_jmv0p")
+disabled = true
 
-[node name="OpenClose" type="Button" parent="CollapsibleContainer" unique_id=1967652659]
-layout_mode = 0
-offset_left = 58.0
-offset_right = 188.0
-offset_bottom = 31.0
+[node name="drill3" type="Sprite2D" parent="solid/drillshape3" unique_id=1664652977]
+visible = false
+position = Vector2(-0.1875, -0.99998474)
+scale = Vector2(0.6826176, 1.2304688)
+texture = ExtResource("4_wm3ai")
 
-[connection signal="pressed" from="CollapsibleContainer/VBoxContainer/BetterPik" to="." method="_on_better_pik_pressed"]
-[connection signal="pressed" from="CollapsibleContainer/VBoxContainer/MorePik" to="." method="_on_more_pik_pressed"]
-[connection signal="pressed" from="CollapsibleContainer/VBoxContainer/Drill" to="." method="_on_drill_pressed"]
-[connection signal="pressed" from="CollapsibleContainer/VBoxContainer/BetterDrill" to="." method="_on_better_drill_pressed"]
-[connection signal="pressed" from="CollapsibleContainer/VBoxContainer/MoreDrill" to="." method="_on_more_drill_pressed"]
-[connection signal="pressed" from="CollapsibleContainer/VBoxContainer/TredmillEfficiency" to="." method="_on_tredmill_efficiency_pressed"]
-[connection signal="pressed" from="CollapsibleContainer/OpenClose" to="." method="_on_open_close_pressed"]
+[node name="goob" parent="." unique_id=1434186784 instance=ExtResource("5_vdcm2")]
+position = Vector2(99, 157)
+
+[node name="MineStand" type="Area2D" parent="." unique_id=517125244]
+script = ExtResource("6_6rmj2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MineStand" unique_id=1088298393]
+position = Vector2(454.5, -333)
+shape = SubResource("RectangleShape2D_65g8g")
+
+[node name="pickaxeStand" type="Sprite2D" parent="MineStand" unique_id=1836593163]
+position = Vector2(455, -333)
+texture = ExtResource("4_wm3ai")
+
+[node name="Treadmill" type="Area2D" parent="." unique_id=1385500601]
+position = Vector2(-291.5, -160)
+script = ExtResource("7_vsj0x")
+
+[node name="treadshape" type="CollisionShape2D" parent="Treadmill" unique_id=1528399160]
+position = Vector2(-244.5, 306.5)
+shape = SubResource("RectangleShape2D_bjpuc")
+disabled = true
+
+[node name="tredmill" type="Sprite2D" parent="Treadmill/treadshape" unique_id=349309882]
+visible = false
+position = Vector2(-0.5, 0.5)
+scale = Vector2(1.5039059, 0.75390637)
+texture = ExtResource("4_wm3ai")
+
+[connection signal="body_entered" from="MineStand" to="MineStand" method="_on_body_entered"]
+[connection signal="body_entered" from="Treadmill" to="Treadmill" method="_on_body_entered"]

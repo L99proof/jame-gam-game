@@ -55,7 +55,7 @@ func _on_more_pik_pressed() -> void:
 
 func _on_drill_pressed() -> void:
 	Globals.drill += 1
-	if Globals.drill == 3:
+	if Globals.drill >= 1:
 		more_drill.visible = true
 		better_drill.visible = true
 		tredmill_efficiency.visible = true
