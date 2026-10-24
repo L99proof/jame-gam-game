@@ -146,6 +146,7 @@ position = Vector2(-293, 300)
 position = Vector2(155, 277)
 
 [node name="MineStand" type="Area2D" parent="." unique_id=517125244]
+collision_mask = 2
 script = ExtResource("7_pkg7o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MineStand" unique_id=1088298393]
@@ -160,6 +161,7 @@ texture = ExtResource("3_tlwt5")
 position = Vector2(458, -233)
 
 [node name="Treadmill" type="Area2D" parent="." unique_id=1385500601]
+collision_mask = 2
 script = ExtResource("8_gbfbk")
 
 [node name="treadshape" type="CollisionShape2D" parent="Treadmill" unique_id=1528399160]
