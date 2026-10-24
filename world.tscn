@@ -19,13 +19,6 @@ stretch_mode = 1
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1013682925]
 script = ExtResource("2_tlwt5")
 
-[node name="UI" parent="Camera2D" unique_id=464854239 instance=ExtResource("1_f3sb7")]
-z_index = 100
-offset_left = 274.0
-offset_top = -324.0
-offset_right = 274.0
-offset_bottom = -324.0
-
 [node name="bigGuy" type="Sprite2D" parent="." unique_id=1163431889]
 position = Vector2(-354, -286.5)
 scale = Vector2(2.8281255, 4.4765625)
@@ -54,3 +47,12 @@ texture = ExtResource("3_tlwt5")
 position = Vector2(803, -29)
 scale = Vector2(0.15624748, 0.4719848)
 texture = ExtResource("3_tlwt5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=190438933]
+
+[node name="UI" parent="CanvasLayer" unique_id=464854239 instance=ExtResource("1_f3sb7")]
+z_index = 100
+offset_left = 274.0
+offset_top = -324.0
+offset_right = 274.0
+offset_bottom = -324.0
