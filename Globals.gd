@@ -6,6 +6,10 @@ func _ready() -> void:
 	pass # Replace with function body.
 var better_pik_num = 0
 var pik_num = 0
+var drill = 0
+var drill_num = 0
+var better_drill_num = 0
+var tred_eff = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://bog85i12y501n" path="res://themes/UpgradeMenu.tres" id="1_nt7q6"]
 [ext_resource type="Script" uid="uid://htyirh56y5bx" path="res://scripts/ui.gd" id="1_x4jx1"]
 
-[node name="UI" type="Control" unique_id=464854239 node_paths=PackedStringArray("better_pik_label", "better_pik", "more_pik_label", "more_pik")]
+[node name="UI" type="Control" unique_id=464854239 node_paths=PackedStringArray("better_pik_label", "better_pik", "more_pik_label", "more_pik", "drill_label", "drill", "better_drill_label", "more_drill_label", "more_drill", "better_drill", "tredmill_efficiency_label", "tredmill_efficiency")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +15,14 @@ better_pik_label = NodePath("Upgrade UI/VBoxContainer/BetterPik/BetterPikLabel")
 better_pik = NodePath("Upgrade UI/VBoxContainer/BetterPik")
 more_pik_label = NodePath("Upgrade UI/VBoxContainer/MorePik/MorePikLabel")
 more_pik = NodePath("Upgrade UI/VBoxContainer/MorePik")
+drill_label = NodePath("Upgrade UI/VBoxContainer/Drill/DrillLabel")
+drill = NodePath("Upgrade UI/VBoxContainer/Drill")
+better_drill_label = NodePath("Upgrade UI/VBoxContainer/BetterDrill/BetterDrillLabel")
+more_drill_label = NodePath("Upgrade UI/VBoxContainer/MoreDrill/MoreDrillLabel")
+more_drill = NodePath("Upgrade UI/VBoxContainer/MoreDrill")
+better_drill = NodePath("Upgrade UI/VBoxContainer/BetterDrill")
+tredmill_efficiency_label = NodePath("Upgrade UI/VBoxContainer/TredmillEfficiency/TredmillEfficiencyLabel")
+tredmill_efficiency = NodePath("Upgrade UI/VBoxContainer/TredmillEfficiency")
 
 [node name="Upgrade UI" type="ScrollContainer" parent="." unique_id=1370161092]
 layout_mode = 0
@@ -52,5 +60,62 @@ offset_right = 287.0
 offset_bottom = 47.0
 theme = ExtResource("1_nt7q6")
 
+[node name="Drill" type="Button" parent="Upgrade UI/VBoxContainer" unique_id=863158032]
+layout_mode = 2
+theme = ExtResource("1_nt7q6")
+text = "Drill?"
+
+[node name="DrillLabel" type="Label" parent="Upgrade UI/VBoxContainer/Drill" unique_id=209164821]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 5.0
+offset_right = 287.0
+offset_bottom = 47.0
+theme = ExtResource("1_nt7q6")
+
+[node name="BetterDrill" type="Button" parent="Upgrade UI/VBoxContainer" unique_id=795157146]
+layout_mode = 2
+theme = ExtResource("1_nt7q6")
+text = "Better Drill"
+
+[node name="BetterDrillLabel" type="Label" parent="Upgrade UI/VBoxContainer/BetterDrill" unique_id=894352559]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 5.0
+offset_right = 287.0
+offset_bottom = 47.0
+theme = ExtResource("1_nt7q6")
+
+[node name="MoreDrill" type="Button" parent="Upgrade UI/VBoxContainer" unique_id=171532316]
+layout_mode = 2
+theme = ExtResource("1_nt7q6")
+text = "More Drill"
+
+[node name="MoreDrillLabel" type="Label" parent="Upgrade UI/VBoxContainer/MoreDrill" unique_id=239321394]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 5.0
+offset_right = 287.0
+offset_bottom = 47.0
+theme = ExtResource("1_nt7q6")
+
+[node name="TredmillEfficiency" type="Button" parent="Upgrade UI/VBoxContainer" unique_id=1928679772]
+layout_mode = 2
+theme = ExtResource("1_nt7q6")
+text = "Tredmill Efficiency"
+autowrap_mode = 3
+
+[node name="TredmillEfficiencyLabel" type="Label" parent="Upgrade UI/VBoxContainer/TredmillEfficiency" unique_id=400437569]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 25.0
+offset_right = 287.0
+offset_bottom = 67.0
+theme = ExtResource("1_nt7q6")
+
 [connection signal="pressed" from="Upgrade UI/VBoxContainer/BetterPik" to="." method="_on_better_pik_pressed"]
 [connection signal="pressed" from="Upgrade UI/VBoxContainer/MorePik" to="." method="_on_more_pik_pressed"]
+[connection signal="pressed" from="Upgrade UI/VBoxContainer/Drill" to="." method="_on_drill_pressed"]
+[connection signal="pressed" from="Upgrade UI/VBoxContainer/BetterDrill" to="." method="_on_better_drill_pressed"]
+[connection signal="pressed" from="Upgrade UI/VBoxContainer/MoreDrill" to="." method="_on_more_drill_pressed"]
+[connection signal="pressed" from="Upgrade UI/VBoxContainer/TredmillEfficiency" to="." method="_on_tredmill_efficiency_pressed"]
