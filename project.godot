@@ -11,13 +11,22 @@ config_version=5
 [application]
 
 config/name="New Game Project"
+run/main_scene="uid://ckavqb25bdaul"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://sprites/icon.svg"
+
+[autoload]
+
+Globals="*uid://cxl728v8kogpk"
 
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 [physics]
 

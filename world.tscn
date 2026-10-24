@@ -1,3 +1,9 @@
 [gd_scene format=3 uid="uid://ckavqb25bdaul"]
 
+[ext_resource type="PackedScene" uid="uid://djf7keuxeyyoh" path="res://scenes/ui.tscn" id="1_f3sb7"]
+
 [node name="World" type="Node2D" unique_id=2085603094]
+
+[node name="UI" parent="." unique_id=464854239 instance=ExtResource("1_f3sb7")]
+offset_left = 850.0
+offset_right = 850.0

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://djf7keuxeyyoh"]
+
+[ext_resource type="Theme" uid="uid://bog85i12y501n" path="res://themes/UpgradeMenu.tres" id="1_nt7q6"]
+[ext_resource type="Script" uid="uid://htyirh56y5bx" path="res://scripts/ui.gd" id="1_x4jx1"]
+
+[node name="UI" type="Control" unique_id=464854239]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x4jx1")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1370161092]
+layout_mode = 0
+offset_right = 302.0
+offset_bottom = 651.0
+theme = ExtResource("1_nt7q6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=409644792]
+layout_mode = 2
+
+[node name="BetterPik" type="Button" parent="ScrollContainer/VBoxContainer" unique_id=286715677]
+layout_mode = 2
+theme = ExtResource("1_nt7q6")
+text = "Better pickaxe"
+alignment = 0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/BetterPik" unique_id=949299231]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 5.0
+offset_right = 287.0
+offset_bottom = 47.0
+theme = ExtResource("1_nt7q6")
+
+[node name="MorePik" type="Button" parent="ScrollContainer/VBoxContainer" unique_id=320272040]
+layout_mode = 2
+theme = ExtResource("1_nt7q6")
+text = "More pickaxe"
