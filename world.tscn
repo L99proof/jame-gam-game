@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dhle5ahad4cse" path="res://scripts/cameramove.gd" id="2_tlwt5"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://sprites/icon.svg" id="3_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://dmaa8vb3g4j4u" path="res://scenes/goob.tscn" id="4_aqk2v"]
+[ext_resource type="Script" uid="uid://wk37x1v0mibu" path="res://scripts/mine_stand.gd" id="7_pkg7o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tv4mw"]
 size = Vector2(58.5625, 1013.5)
@@ -22,6 +23,15 @@ size = Vector2(87, 156)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjpuc"]
 size = Vector2(191, 97)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65g8g"]
+size = Vector2(129, 128)
+
+[sub_resource type="Curve2D" id="Curve2D_pkg7o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 458, -233, 0, 0, 0, 0, -34, -206)
+}
+point_count = 2
+
 [node name="World" type="Node2D" unique_id=2085603094 node_paths=PackedStringArray("drillshape", "drill", "drillshape_2", "drill_2", "drillshape_3", "drill_3", "treadshape", "tredmill")]
 script = ExtResource("1_dwbse")
 drillshape = NodePath("solid/drillshape")
@@ -36,6 +46,7 @@ tredmill = NodePath("solid/treadshape/tredmill")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1083738139]
 
 [node name="UI" parent="CanvasLayer" unique_id=464854239 instance=ExtResource("1_f3sb7")]
+visible = false
 z_index = 100
 offset_left = 274.0
 offset_top = -324.0
@@ -143,18 +154,31 @@ position = Vector2(-0.1875, -0.99998474)
 scale = Vector2(0.6826176, 1.2304688)
 texture = ExtResource("3_tlwt5")
 
-[node name="pickaxeStand" type="Sprite2D" parent="." unique_id=1836593163]
-position = Vector2(455, -333)
-texture = ExtResource("3_tlwt5")
-
-[node name="goob" parent="." unique_id=1422091004 instance=ExtResource("4_aqk2v")]
-position = Vector2(321, 284)
-
-[node name="goob2" parent="." unique_id=1087957917 instance=ExtResource("4_aqk2v")]
-position = Vector2(238, -247)
-
 [node name="goob3" parent="." unique_id=1434186784 instance=ExtResource("4_aqk2v")]
 position = Vector2(617, -145)
 
 [node name="goob4" parent="." unique_id=1274700675 instance=ExtResource("4_aqk2v")]
 position = Vector2(155, 277)
+
+[node name="MineStand" type="Area2D" parent="." unique_id=517125244]
+script = ExtResource("7_pkg7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MineStand" unique_id=1088298393]
+position = Vector2(454.5, -333)
+shape = SubResource("RectangleShape2D_65g8g")
+
+[node name="pickaxeStand" type="Sprite2D" parent="MineStand" unique_id=1836593163]
+position = Vector2(455, -333)
+texture = ExtResource("3_tlwt5")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=121328307]
+curve = SubResource("Curve2D_pkg7o")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=878358881]
+position = Vector2(458, -233)
+rotates = false
+loop = false
+
+[node name="goob2" parent="Path2D/PathFollow2D" unique_id=1087957917 instance=ExtResource("4_aqk2v")]
+
+[connection signal="body_entered" from="MineStand" to="MineStand" method="_on_body_entered"]

@@ -26,3 +26,7 @@ func _process(delta: float) -> void:
 	if Globals.drill >= 3:
 		drillshape_3.set_deferred("disabled", false)
 		drill_3.set_deferred("visible", true)
+
+
+func _on_mine_stand_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
