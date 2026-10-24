@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ckavqb25bdaul"]
 
 [ext_resource type="Texture2D" uid="uid://b7m681ciuwwn7" path="res://sprites/grass.jpg" id="1_aqk2v"]
+[ext_resource type="Script" uid="uid://d0nhl0c06ortq" path="res://world.gd" id="1_dwbse"]
 [ext_resource type="PackedScene" uid="uid://djf7keuxeyyoh" path="res://scenes/ui.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://dhle5ahad4cse" path="res://scripts/cameramove.gd" id="2_tlwt5"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://sprites/icon.svg" id="3_tlwt5"]
@@ -21,7 +22,16 @@ size = Vector2(87, 156)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjpuc"]
 size = Vector2(191, 97)
 
-[node name="World" type="Node2D" unique_id=2085603094]
+[node name="World" type="Node2D" unique_id=2085603094 node_paths=PackedStringArray("drillshape", "drill", "drillshape_2", "drill_2", "drillshape_3", "drill_3", "treadshape", "tredmill")]
+script = ExtResource("1_dwbse")
+drillshape = NodePath("solid/drillshape")
+drill = NodePath("solid/drillshape/drill")
+drillshape_2 = NodePath("solid/drillshape2")
+drill_2 = NodePath("solid/drillshape2/drill2")
+drillshape_3 = NodePath("solid/drillshape3")
+drill_3 = NodePath("solid/drillshape3/drill3")
+treadshape = NodePath("solid/treadshape")
+tredmill = NodePath("solid/treadshape/tredmill")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1083738139]
 
@@ -31,6 +41,7 @@ offset_left = 274.0
 offset_top = -324.0
 offset_right = 274.0
 offset_bottom = -324.0
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1830423451]
 offset_left = -6216.0
@@ -40,6 +51,7 @@ offset_bottom = 4929.0
 texture = ExtResource("1_aqk2v")
 expand_mode = 3
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1013682925]
 script = ExtResource("2_tlwt5")
@@ -90,8 +102,10 @@ texture = ExtResource("3_tlwt5")
 [node name="drillshape" type="CollisionShape2D" parent="solid" unique_id=1458447829]
 position = Vector2(-374.5, 180)
 shape = SubResource("RectangleShape2D_jmv0p")
+disabled = true
 
 [node name="drill" type="Sprite2D" parent="solid/drillshape" unique_id=929776969]
+visible = false
 position = Vector2(-0.1875, -0.99998474)
 scale = Vector2(0.6826176, 1.2304688)
 texture = ExtResource("3_tlwt5")
@@ -101,6 +115,7 @@ position = Vector2(-244.5, 306.5)
 shape = SubResource("RectangleShape2D_bjpuc")
 
 [node name="tredmill" type="Sprite2D" parent="solid/treadshape" unique_id=349309882]
+visible = false
 position = Vector2(-0.5, 0.5)
 scale = Vector2(1.5039059, 0.75390637)
 texture = ExtResource("3_tlwt5")
@@ -108,8 +123,10 @@ texture = ExtResource("3_tlwt5")
 [node name="drillshape2" type="CollisionShape2D" parent="solid" unique_id=1376050983]
 position = Vector2(-272, 180)
 shape = SubResource("RectangleShape2D_jmv0p")
+disabled = true
 
-[node name="drill" type="Sprite2D" parent="solid/drillshape2" unique_id=1463705783]
+[node name="drill2" type="Sprite2D" parent="solid/drillshape2" unique_id=1463705783]
+visible = false
 position = Vector2(-0.1875, -0.99998474)
 scale = Vector2(0.6826176, 1.2304688)
 texture = ExtResource("3_tlwt5")
@@ -117,8 +134,10 @@ texture = ExtResource("3_tlwt5")
 [node name="drillshape3" type="CollisionShape2D" parent="solid" unique_id=1054299462]
 position = Vector2(-170, 180)
 shape = SubResource("RectangleShape2D_jmv0p")
+disabled = true
 
-[node name="drill" type="Sprite2D" parent="solid/drillshape3" unique_id=1664652977]
+[node name="drill3" type="Sprite2D" parent="solid/drillshape3" unique_id=1664652977]
+visible = false
 position = Vector2(-0.1875, -0.99998474)
 scale = Vector2(0.6826176, 1.2304688)
 texture = ExtResource("3_tlwt5")

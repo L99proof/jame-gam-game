@@ -14,6 +14,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if stick == true:
 		position = get_global_mouse_position()
+		velocity = Vector2(randf_range(-SPEED,SPEED),randf_range(-SPEED,SPEED))
 	
 func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
