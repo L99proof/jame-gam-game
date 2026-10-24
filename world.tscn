@@ -174,4 +174,8 @@ scale = Vector2(1.5039059, 0.75390637)
 texture = ExtResource("3_tlwt5")
 
 [connection signal="body_entered" from="MineStand" to="MineStand" method="_on_body_entered"]
+[connection signal="mouse_entered" from="MineStand" to="MineStand" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MineStand" to="MineStand" method="_on_mouse_exited"]
 [connection signal="body_entered" from="Treadmill" to="Treadmill" method="_on_body_entered"]
+[connection signal="mouse_entered" from="Treadmill" to="Treadmill" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Treadmill" to="Treadmill" method="_on_mouse_exited"]
