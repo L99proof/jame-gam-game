@@ -90,7 +90,7 @@ scale = Vector2(0.15624748, 0.4719848)
 texture = ExtResource("3_tlwt5")
 
 [node name="fence5" type="CollisionShape2D" parent="solid" unique_id=98384616 groups=["walls"]]
-position = Vector2(38, 428)
+position = Vector2(38, 431)
 shape = SubResource("RectangleShape2D_aqk2v")
 
 [node name="fence2sprite" type="Sprite2D" parent="solid/fence5" unique_id=90993576]
@@ -163,7 +163,7 @@ position = Vector2(458, -233)
 script = ExtResource("8_gbfbk")
 
 [node name="treadshape" type="CollisionShape2D" parent="Treadmill" unique_id=1528399160]
-position = Vector2(-244.5, 306.5)
+position = Vector2(-244.5, 307.5)
 shape = SubResource("RectangleShape2D_bjpuc")
 disabled = true
 
