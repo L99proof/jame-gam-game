@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ckavqb25bdaul"]
 
 [ext_resource type="PackedScene" uid="uid://djf7keuxeyyoh" path="res://scenes/ui.tscn" id="1_f3sb7"]
-[ext_resource type="Script" uid="uid://boa5scnw8xkf7" path="res://camera_2d.gd" id="1_fj7yv"]
+[ext_resource type="Script" uid="uid://boa5scnw8xkf7" path="res://scripts/camera_2d.gd" id="1_fj7yv"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://sprites/icon.svg" id="3_tlwt5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vddbn"]
@@ -33,7 +33,31 @@ position = Vector2(-3.993511e-06, 0.50001526)
 scale = Vector2(5176, 387.00003)
 texture = SubResource("PlaceholderTexture2D_jmv0p")
 
-[node name="big guy" type="Sprite2D" parent="." unique_id=1163431889]
-position = Vector2(-382, -286.5)
-scale = Vector2(2.3906252, 4.4765625)
+[node name="bigGuy" type="Sprite2D" parent="." unique_id=1163431889]
+position = Vector2(-354, -286.5)
+scale = Vector2(2.8281255, 4.4765625)
+texture = ExtResource("3_tlwt5")
+
+[node name="drill" type="Sprite2D" parent="." unique_id=929776969]
+position = Vector2(-737.99994, -121)
+scale = Vector2(3.171875, 1.890625)
+texture = ExtResource("3_tlwt5")
+
+[node name="tredmill" type="Sprite2D" parent="." unique_id=349309882]
+position = Vector2(-1311.0001, -39.000004)
+scale = Vector2(2.984375, 0.609375)
+texture = ExtResource("3_tlwt5")
+
+[node name="pickaxeStand?" type="Sprite2D" parent="." unique_id=1836593163]
+position = Vector2(283, -68)
+texture = ExtResource("3_tlwt5")
+
+[node name="fence" type="Sprite2D" parent="." unique_id=1547652429]
+position = Vector2(471, -29.000002)
+scale = Vector2(0.20312507, 0.46874997)
+texture = ExtResource("3_tlwt5")
+
+[node name="fence2" type="Sprite2D" parent="." unique_id=1527351140]
+position = Vector2(803, -29)
+scale = Vector2(0.15624748, 0.4719848)
 texture = ExtResource("3_tlwt5")
