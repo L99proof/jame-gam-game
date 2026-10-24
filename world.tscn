@@ -4,6 +4,10 @@
 
 [node name="World" type="Node2D" unique_id=2085603094]
 
-[node name="UI" parent="." unique_id=464854239 instance=ExtResource("1_f3sb7")]
-offset_left = 850.0
-offset_right = 850.0
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1013682925]
+
+[node name="UI" parent="Camera2D" unique_id=464854239 instance=ExtResource("1_f3sb7")]
+offset_left = 274.0
+offset_top = -324.0
+offset_right = 274.0
+offset_bottom = -324.0
