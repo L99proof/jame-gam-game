@@ -58,6 +58,7 @@ func _process(delta: float) -> void:
 
 func _on_better_pik_pressed() -> void:
 	if Globals.currency >= better_pik_cost:
+		Globals.currency -= better_pik_cost
 		Globals.better_pik_num += 1
 		Globals.pik_speed -= 0.25
 		if Globals.pik_speed == 0:
@@ -67,12 +68,14 @@ func _on_better_pik_pressed() -> void:
 
 func _on_more_pik_pressed() -> void:
 	if Globals.currency >= more_pik_cost:
+		Globals.currency -= more_pik_cost
 		Globals.pik_num += 1
 		more_pik_cost *= 4
 
 
 func _on_drill_pressed() -> void:
 	if Globals.currency >= drill_cost:
+		Globals.currency -= drill_cost
 		Globals.drill += 1
 		if Globals.drill == 1:
 			better_drill.visible = true
@@ -83,6 +86,7 @@ func _on_drill_pressed() -> void:
 
 func _on_better_drill_pressed() -> void:
 	if Globals.currency >= better_drill_cost:
+		Globals.currency -= better_drill_cost
 		Globals.better_drill_num += 1
 		Globals.drill_speed -= 0.25
 		if Globals.drill_speed == 0:
@@ -92,6 +96,7 @@ func _on_better_drill_pressed() -> void:
 
 func _on_tredmill_efficiency_pressed() -> void:
 	if Globals.currency >= better_tredmill_efficiency_cost:
+		Globals.currency -= better_tredmill_efficiency_cost
 		Globals.tred_eff += 1
 		Globals.energy_per_goob = 10
 		tredmill_efficiency.disabled = true
@@ -99,6 +104,7 @@ func _on_tredmill_efficiency_pressed() -> void:
 
 func _on_max_energy_pressed() -> void:
 	if Globals.currency >= max_energy_cost:
+		Globals.currency -= max_energy_cost
 		Globals.max_energy += 50
 		max_energy_cost *= 2
 
