@@ -11,6 +11,8 @@ extends Node2D
 @export var timer: Timer
 @export var click_cooldown: Timer
 @export var drill_time: Timer
+@export var pik_label: Label
+@export var power_label: Label
 
 var goobs = []
 var goobs2 = []
@@ -34,19 +36,22 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Globals.drill >= 1:
+	if Globals.drill == 1:
 		treadmill.set_deferred("monitoring", true)
 		treadshape.set_deferred("disabled", false)
 		tredmill.set_deferred("visible", true)
 		drillshape.set_deferred("disabled", false)
 		drill.set_deferred("visible", true)
-	if Globals.drill >= 2:
+		power_label.set_deferred("visible", true)
+		
+	if Globals.drill == 2:
 		drillshape_2.set_deferred("disabled", false)
 		drill_2.set_deferred("visible", true)
-	if Globals.drill >= 3:
+	if Globals.drill == 3:
 		drillshape_3.set_deferred("disabled", false)
 		drill_3.set_deferred("visible", true)
-
+	pik_label.text = str(Globals.miners) + "/" + str(Globals.pik_num)
+	power_label.text = "power: " + str(clamp(Globals.current_energy,0 , Globals.max_energy)) + "/" + str(Globals.max_energy)
 
 func _on_timer_timeout() -> void:
 	if Globals.current_energy < Globals.max_energy:

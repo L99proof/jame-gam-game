@@ -33,9 +33,9 @@ Give feedback at: https://github.com/ArshvirGoraya/Godot-Collapsible-Container"
 custom_minimum_size = Vector2(412, 473)
 clip_contents = true
 anchors_preset = 0
-offset_left = 7.999999
+offset_left = -31.0
 offset_top = 6.000001
-offset_right = 420.0
+offset_right = 381.0
 offset_bottom = 479.0
 size_flags_horizontal = 3
 size_flags_vertical = 8

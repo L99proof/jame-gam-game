@@ -74,9 +74,7 @@ size = Vector2(539.6804, 290.3444)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43y88"]
 size = Vector2(500, 500)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vddbn"]
-
-[node name="World" type="Node2D" unique_id=2085603094 node_paths=PackedStringArray("drillshape", "drill", "drillshape_2", "drill_2", "drillshape_3", "drill_3", "treadshape", "tredmill", "treadmill", "timer", "click_cooldown", "drill_time")]
+[node name="World" type="Node2D" unique_id=2085603094 node_paths=PackedStringArray("drillshape", "drill", "drillshape_2", "drill_2", "drillshape_3", "drill_3", "treadshape", "tredmill", "treadmill", "timer", "click_cooldown", "drill_time", "pik_label", "power_label")]
 y_sort_enabled = true
 script = ExtResource("1_dwbse")
 drillshape = NodePath("solid/drillshape")
@@ -91,6 +89,17 @@ treadmill = NodePath("Treadmill")
 timer = NodePath("Timer")
 click_cooldown = NodePath("click cooldown")
 drill_time = NodePath("drillTime")
+pik_label = NodePath("pikLabel")
+power_label = NodePath("PowerLabel")
+
+[node name="PowerLabel" type="Label" parent="." unique_id=657567407]
+visible = false
+offset_left = -1827.0
+offset_top = -289.0
+offset_right = -1467.0
+offset_bottom = -201.0
+theme_override_font_sizes/font_size = 64
+text = "3/5"
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1830423451]
 anchors_preset = 8
@@ -273,12 +282,13 @@ flat = true
 
 [node name="drillTime" type="Timer" parent="." unique_id=1224390071]
 
-[node name="Label" type="Label" parent="." unique_id=1466015725]
-offset_left = 293.0
-offset_top = -1349.0
-offset_right = 433.0
-offset_bottom = -1304.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_vddbn")
+[node name="pikLabel" type="Label" parent="." unique_id=1466015725]
+offset_left = 302.0
+offset_top = -1365.0
+offset_right = 442.0
+offset_bottom = -1277.0
+theme_override_font_sizes/font_size = 64
+text = "3/5"
 
 [connection signal="pressed" from="solid/guyshape/Button" to="." method="_on_button_pressed"]
 [connection signal="body_entered" from="MineStand" to="MineStand" method="_on_body_entered"]
