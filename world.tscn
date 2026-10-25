@@ -5,40 +5,95 @@
 [ext_resource type="PackedScene" uid="uid://djf7keuxeyyoh" path="res://scenes/ui.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://dhle5ahad4cse" path="res://scripts/cameramove.gd" id="2_tlwt5"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://sprites/icon.svg" id="3_tlwt5"]
+[ext_resource type="Texture2D" uid="uid://c00epib6hsc1h" path="res://sprites/stone2.jpg" id="4_70uel"]
 [ext_resource type="PackedScene" uid="uid://dmaa8vb3g4j4u" path="res://scenes/goob.tscn" id="4_aqk2v"]
+[ext_resource type="Shader" uid="uid://cg7vwiev5uuur" path="res://world.gdshader" id="5_ic0uy"]
 [ext_resource type="Script" uid="uid://wk37x1v0mibu" path="res://scripts/mine_stand.gd" id="7_pkg7o"]
+[ext_resource type="Texture2D" uid="uid://dcpa4ilfg654n" path="res://sprites/BigGuy.png" id="7_wse8f"]
 [ext_resource type="Script" uid="uid://c4aw6y8ysjt60" path="res://treadmill.gd" id="8_gbfbk"]
+[ext_resource type="Texture2D" uid="uid://d0wwjufvxb4yt" path="res://sprites/drill1.png" id="8_hiqwa"]
+[ext_resource type="Texture2D" uid="uid://dcbtqn0x5ybwf" path="res://sprites/drill2.png" id="9_2u3nc"]
+[ext_resource type="Texture2D" uid="uid://bav16pns2nwbs" path="res://sprites/drill3.png" id="10_udxuc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4gbpf"]
+shader = ExtResource("5_ic0uy")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tv4mw"]
-size = Vector2(58.5625, 1013.5)
+size = Vector2(2033.6602, 10219)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqk2v"]
-size = Vector2(1285.125, 145)
+size = Vector2(10117, 2076.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vddbn"]
-size = Vector2(377, 504)
+size = Vector2(562, 1912)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jmv0p"]
-size = Vector2(87, 156)
+size = Vector2(162.67111, 340.28427)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qgddc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_hiqwa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2u3nc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_udxuc")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65g8g"]
 size = Vector2(129, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjpuc"]
-size = Vector2(191, 97)
+size = Vector2(539.6804, 290.3444)
 
 [node name="World" type="Node2D" unique_id=2085603094 node_paths=PackedStringArray("drillshape", "drill", "drillshape_2", "drill_2", "drillshape_3", "drill_3", "treadshape", "tredmill", "treadmill")]
 y_sort_enabled = true
 script = ExtResource("1_dwbse")
 drillshape = NodePath("solid/drillshape")
-drill = NodePath("solid/drillshape/drill")
+drill = NodePath("solid/drillshape/AnimatedSprite2D")
 drillshape_2 = NodePath("solid/drillshape2")
-drill_2 = NodePath("solid/drillshape2/drill2")
+drill_2 = NodePath("solid/drillshape2/AnimatedSprite2D")
 drillshape_3 = NodePath("solid/drillshape3")
-drill_3 = NodePath("solid/drillshape3/drill3")
+drill_3 = NodePath("solid/drillshape3/AnimatedSprite2D")
 treadshape = NodePath("Treadmill/treadshape")
 tredmill = NodePath("Treadmill/treadshape/tredmill")
 treadmill = NodePath("Treadmill")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1830423451]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8192.0
+offset_top = -8192.0
+offset_right = 8192.0
+offset_bottom = 8192.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_aqk2v")
+expand_mode = 3
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect5" type="TextureRect" parent="." unique_id=785630861]
+material = SubResource("ShaderMaterial_4gbpf")
+offset_left = -8192.0
+offset_top = -8192.0
+offset_right = 8192.0
+offset_bottom = 8192.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("4_70uel")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1083738139]
 layer = 2
@@ -51,97 +106,78 @@ offset_right = 274.0
 offset_bottom = -324.0
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1830423451]
-offset_left = -6216.0
-offset_top = -4017.0
-offset_right = 6588.0
-offset_bottom = 4929.0
-texture = ExtResource("1_aqk2v")
-expand_mode = 3
-stretch_mode = 1
-metadata/_edit_use_anchors_ = true
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1013682925]
+zoom = Vector2(0.42, 0.42)
 script = ExtResource("2_tlwt5")
 
 [node name="solid" type="StaticBody2D" parent="." unique_id=2057744706]
 
 [node name="fence2" type="CollisionShape2D" parent="solid" unique_id=539559856 groups=["walls"]]
-position = Vector2(-609.125, -26)
+position = Vector2(-3750, 0)
 shape = SubResource("RectangleShape2D_tv4mw")
-
-[node name="fence2sprite" type="Sprite2D" parent="solid/fence2" unique_id=1527351140 groups=["walls"]]
-scale = Vector2(0.15624748, 0.4719848)
-texture = ExtResource("3_tlwt5")
-
-[node name="fence3" type="CollisionShape2D" parent="solid" unique_id=582304332 groups=["walls"]]
-position = Vector2(26.4375, -507.5)
-shape = SubResource("RectangleShape2D_aqk2v")
-
-[node name="fence2sprite" type="Sprite2D" parent="solid/fence3" unique_id=1113859505]
-scale = Vector2(0.15624748, 0.4719848)
-texture = ExtResource("3_tlwt5")
 
 [node name="fence4" type="CollisionShape2D" parent="solid" unique_id=900731151 groups=["walls"]]
-position = Vector2(695.28125, -117.25)
+position = Vector2(3750, 0)
 shape = SubResource("RectangleShape2D_tv4mw")
 
-[node name="fence2sprite" type="Sprite2D" parent="solid/fence4" unique_id=1977973383]
-scale = Vector2(0.15624748, 0.4719848)
-texture = ExtResource("3_tlwt5")
-
-[node name="fence5" type="CollisionShape2D" parent="solid" unique_id=98384616 groups=["walls"]]
-position = Vector2(38, 431)
+[node name="fence3" type="CollisionShape2D" parent="solid" unique_id=582304332 groups=["walls"]]
+position = Vector2(0, -3750)
 shape = SubResource("RectangleShape2D_aqk2v")
 
-[node name="fence2sprite" type="Sprite2D" parent="solid/fence5" unique_id=90993576]
-scale = Vector2(0.15624748, 0.4719848)
-texture = ExtResource("3_tlwt5")
+[node name="fence5" type="CollisionShape2D" parent="solid" unique_id=98384616 groups=["walls"]]
+position = Vector2(0, 3750)
+shape = SubResource("RectangleShape2D_aqk2v")
 
 [node name="guyshape" type="CollisionShape2D" parent="solid" unique_id=1332950676]
-position = Vector2(-265.5, -152)
+position = Vector2(-962, -856)
 shape = SubResource("RectangleShape2D_vddbn")
 
 [node name="bigGuy" type="Sprite2D" parent="solid/guyshape" unique_id=1163431889]
-position = Vector2(-0.5, -1)
+position = Vector2(50, 4.9999995)
 scale = Vector2(2.929688, 3.953125)
-texture = ExtResource("3_tlwt5")
+texture = ExtResource("7_wse8f")
 
 [node name="drillshape" type="CollisionShape2D" parent="solid" unique_id=1458447829]
-position = Vector2(-374.5, 180)
+position = Vector2(-1501, -955.00006)
+rotation = 1.6082875
+scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_jmv0p")
 disabled = true
 
-[node name="drill" type="Sprite2D" parent="solid/drillshape" unique_id=929776969]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="solid/drillshape" unique_id=1588501040]
 visible = false
-position = Vector2(-0.1875, -0.99998474)
-scale = Vector2(0.6826176, 1.2304688)
-texture = ExtResource("3_tlwt5")
+rotation = -1.5707964
+sprite_frames = SubResource("SpriteFrames_qgddc")
+frame = 2
+frame_progress = 0.31614983
 
 [node name="drillshape2" type="CollisionShape2D" parent="solid" unique_id=1376050983]
-position = Vector2(-272, 180)
+position = Vector2(-1500, -753.00006)
+rotation = 1.5827127
 shape = SubResource("RectangleShape2D_jmv0p")
 disabled = true
 
-[node name="drill2" type="Sprite2D" parent="solid/drillshape2" unique_id=1463705783]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="solid/drillshape2" unique_id=701018823]
 visible = false
-position = Vector2(-0.1875, -0.99998474)
-scale = Vector2(0.6826176, 1.2304688)
-texture = ExtResource("3_tlwt5")
+rotation = -1.5707964
+scale = Vector2(0.9999999, 0.9999999)
+sprite_frames = SubResource("SpriteFrames_qgddc")
+frame = 2
+frame_progress = 0.99373317
 
 [node name="drillshape3" type="CollisionShape2D" parent="solid" unique_id=1054299462]
-position = Vector2(-170, 180)
+position = Vector2(-1483.0001, -549)
+rotation = 1.5600766
 shape = SubResource("RectangleShape2D_jmv0p")
 disabled = true
 
-[node name="drill3" type="Sprite2D" parent="solid/drillshape3" unique_id=1664652977]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="solid/drillshape3" unique_id=748994532]
 visible = false
-position = Vector2(-0.1875, -0.99998474)
-scale = Vector2(0.6826176, 1.2304688)
-texture = ExtResource("3_tlwt5")
-
-[node name="goob3" parent="." unique_id=1434186784 instance=ExtResource("4_aqk2v")]
-position = Vector2(-293, 300)
+rotation = -1.5707964
+scale = Vector2(0.99999976, 0.99999976)
+sprite_frames = SubResource("SpriteFrames_qgddc")
+frame = 2
+frame_progress = 0.90986973
 
 [node name="goob4" parent="." unique_id=1274700675 instance=ExtResource("4_aqk2v")]
 position = Vector2(155, 277)
@@ -158,15 +194,13 @@ shape = SubResource("RectangleShape2D_65g8g")
 position = Vector2(455, -333)
 texture = ExtResource("3_tlwt5")
 
-[node name="goob2" parent="." unique_id=1087957917 instance=ExtResource("4_aqk2v")]
-position = Vector2(458, -233)
-
 [node name="Treadmill" type="Area2D" parent="." unique_id=1385500601]
 collision_mask = 2
 script = ExtResource("8_gbfbk")
 
 [node name="treadshape" type="CollisionShape2D" parent="Treadmill" unique_id=1528399160]
-position = Vector2(-244.5, 307.5)
+position = Vector2(-1629, -43)
+rotation = 0.004859478
 shape = SubResource("RectangleShape2D_bjpuc")
 disabled = true
 

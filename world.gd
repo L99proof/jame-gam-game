@@ -1,10 +1,10 @@
 extends Node2D
 @export var drillshape: CollisionShape2D
-@export var drill: Sprite2D
+@export var drill: AnimatedSprite2D
 @export var drillshape_2: CollisionShape2D
-@export var drill_2: Sprite2D
+@export var drill_2: AnimatedSprite2D
 @export var drillshape_3: CollisionShape2D
-@export var drill_3: Sprite2D
+@export var drill_3: AnimatedSprite2D
 @export var treadshape: CollisionShape2D
 @export var tredmill: Sprite2D
 @export var treadmill: Area2D
@@ -12,6 +12,9 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
+	drill.play("default")
+	drill_3.play("default")
+	drill_2.play("default")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
