@@ -16,8 +16,11 @@ func _on_body_exited(body: Node2D) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if guy is CharacterBody2D:
-		if guy.drag == false and Globals.miners < Globals.pik_num:
-			var miner_guy = guy 
-			guy = null
-			miner_guy.makeMine()
+	if is_instance_valid(guy): 
+		if guy is CharacterBody2D:
+			if guy.drag == false and Globals.miners < Globals.pik_num:
+				var miner_guy = guy 
+				guy = null
+				miner_guy.makeMine()
+	else:
+		guy = null 
