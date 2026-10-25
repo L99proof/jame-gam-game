@@ -13,6 +13,9 @@ extends Control
 @export var tredmill_efficiency: Button
 @export var collapsebutton: Button
 @export var collapsible: CollapsibleContainer
+@export var max_energy: Button
+@export var max_energy_label: Label
+
 var opencloseuithing = 0
 
 
@@ -30,7 +33,7 @@ func _ready() -> void:
 	better_drill.visible = false
 	more_drill.visible = false
 	tredmill_efficiency.visible = false
-
+	max_energy.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -41,6 +44,7 @@ func _process(delta: float) -> void:
 	better_drill_label.text = str(Globals.better_drill_num)
 	more_drill_label.text = str(Globals.drill_num)
 	tredmill_efficiency_label.text = str(Globals.tred_eff)
+	max_energy_label.text = str((Globals.max_energy/50)-2)
 	
 	if Globals.drill == 3:
 		drill.disabled = true
@@ -59,6 +63,7 @@ func _on_drill_pressed() -> void:
 		more_drill.visible = true
 		better_drill.visible = true
 		tredmill_efficiency.visible = true
+		max_energy.visible = true
 
 
 func _on_better_drill_pressed() -> void:
@@ -79,3 +84,7 @@ func _on_open_close_pressed() -> void:
 		collapsebutton.set_text("⌃")
 	if opencloseuithing == 1:
 		collapsebutton.set_text("⌄")
+
+
+func _on_max_energy_pressed() -> void:
+	Globals.max_energy += 50

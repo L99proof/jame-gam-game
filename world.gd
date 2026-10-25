@@ -8,10 +8,12 @@ extends Node2D
 @export var treadshape: CollisionShape2D
 @export var tredmill: Sprite2D
 @export var treadmill: Area2D
+@export var timer: Timer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	
+	timer.start()
 	drill.play("default")
 	drill_3.play("default")
 	drill_2.play("default")
@@ -31,3 +33,12 @@ func _process(delta: float) -> void:
 	if Globals.drill >= 3:
 		drillshape_3.set_deferred("disabled", false)
 		drill_3.set_deferred("visible", true)
+
+
+func _on_timer_timeout() -> void:
+	if Globals.current_energy < Globals.max_energy:
+		Globals.current_energy += (Globals.energy_per_goob * Globals.runners)
+	elif Globals.current_energy > Globals.max_energy:
+		Globals.current_energy = 100
+	else:
+		pass

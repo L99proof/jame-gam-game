@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://btlh4wrv04rc3" path="res://addons/collapsible_container/collapsible_elements/collapsible_container.gd" id="3_gdt2y"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://sprites/icon.svg" id="4_wm3ai"]
 
-[node name="UI" type="Control" unique_id=464854239 node_paths=PackedStringArray("better_pik_label", "better_pik", "more_pik_label", "more_pik", "drill_label", "drill", "better_drill_label", "more_drill_label", "more_drill", "better_drill", "tredmill_efficiency_label", "tredmill_efficiency", "collapsebutton", "collapsible")]
+[node name="UI" type="Control" unique_id=464854239 node_paths=PackedStringArray("better_pik_label", "better_pik", "more_pik_label", "more_pik", "drill_label", "drill", "better_drill_label", "more_drill_label", "more_drill", "better_drill", "tredmill_efficiency_label", "tredmill_efficiency", "collapsebutton", "collapsible", "max_energy", "max_energy_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,18 +30,20 @@ tredmill_efficiency_label = NodePath("CollapsibleContainer/VBoxContainer/Tredmil
 tredmill_efficiency = NodePath("CollapsibleContainer/VBoxContainer/TredmillEfficiency")
 collapsebutton = NodePath("CollapsibleContainer/OpenClose")
 collapsible = NodePath("CollapsibleContainer")
+max_energy = NodePath("CollapsibleContainer/VBoxContainer/MaxEnergy")
+max_energy_label = NodePath("CollapsibleContainer/VBoxContainer/MaxEnergy/MaxEnergyLabel")
 
 [node name="CollapsibleContainer" type="Control" parent="." unique_id=1097302173]
 process_mode = 3
 editor_description = "Control node capable of hiding and revealing its children by folding and unfolding.
 Give feedback at: https://github.com/ArshvirGoraya/Godot-Collapsible-Container"
-custom_minimum_size = Vector2(266, 434)
+custom_minimum_size = Vector2(266, 494)
 clip_contents = true
 anchors_preset = 0
 offset_left = 7.999999
 offset_top = 6.000001
 offset_right = 274.0
-offset_bottom = 440.0
+offset_bottom = 500.0
 size_flags_horizontal = 3
 size_flags_vertical = 8
 script = ExtResource("3_gdt2y")
@@ -60,7 +62,7 @@ layout_mode = 0
 offset_left = -4.999999
 offset_top = -2.000001
 offset_right = 261.0
-offset_bottom = 432.0
+offset_bottom = 492.0
 texture = ExtResource("4_wm3ai")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CollapsibleContainer" unique_id=1437564033]
@@ -149,6 +151,20 @@ offset_right = 287.0
 offset_bottom = 67.0
 theme = ExtResource("1_nt7q6")
 
+[node name="MaxEnergy" type="Button" parent="CollapsibleContainer/VBoxContainer" unique_id=1490622636]
+layout_mode = 2
+theme = ExtResource("1_nt7q6")
+text = "Max Energy"
+autowrap_mode = 3
+
+[node name="MaxEnergyLabel" type="Label" parent="CollapsibleContainer/VBoxContainer/MaxEnergy" unique_id=1871774361]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 6.0
+offset_right = 276.0
+offset_bottom = 48.0
+theme = ExtResource("1_nt7q6")
+
 [node name="OpenClose" type="Button" parent="CollapsibleContainer" unique_id=1967652659]
 layout_mode = 0
 offset_left = 58.0
@@ -161,4 +177,5 @@ offset_bottom = 31.0
 [connection signal="pressed" from="CollapsibleContainer/VBoxContainer/BetterDrill" to="." method="_on_better_drill_pressed"]
 [connection signal="pressed" from="CollapsibleContainer/VBoxContainer/MoreDrill" to="." method="_on_more_drill_pressed"]
 [connection signal="pressed" from="CollapsibleContainer/VBoxContainer/TredmillEfficiency" to="." method="_on_tredmill_efficiency_pressed"]
+[connection signal="pressed" from="CollapsibleContainer/VBoxContainer/MaxEnergy" to="." method="_on_max_energy_pressed"]
 [connection signal="pressed" from="CollapsibleContainer/OpenClose" to="." method="_on_open_close_pressed"]

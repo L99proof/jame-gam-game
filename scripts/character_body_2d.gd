@@ -6,7 +6,6 @@ extends CharacterBody2D
 @export var collision_shape_2d: CollisionShape2D
 @export var area_2d: Area2D
 @export var goob_sprite: AnimatedSprite2D
-@export var timer: Timer
 
 var stick = true
 var drag = false
@@ -34,7 +33,6 @@ func _ready() -> void:
 	SPEED = randf_range(LowSpeed, HighSpeed)
 	home_position = global_position
 	choose_new_pace_target()
-	timer.start()
 	if color == 1:
 		shirt = "Blue"
 	elif color == 2:
@@ -148,7 +146,7 @@ func makeMine() -> void:
 	velocity = Vector2(0,0)
 	collision_shape_2d.set_deferred("disabled", true)
 	Globals.miners += 1
-	target_position = Vector2(randf_range(-34.5,-35.5),randf_range(-300,-100))
+	target_position = Vector2(randf_range(-590,-580),randf_range(-452,-1140))
 
 
 func stopMine() -> void:
@@ -163,7 +161,7 @@ func makeRun() -> void:
 	toss = false
 	velocity = Vector2(0,0)
 	collision_shape_2d.set_deferred("disabled", true)
-	position = Vector2(randi_range(-200,-290),300)
+	position = Vector2(randi_range(-1856,-1405), randi_range(-150,55))
 	Globals.runners += 1
 
 func stopRun() -> void:
@@ -172,11 +170,3 @@ func stopRun() -> void:
 	choose_new_pace_target()
 	collision_shape_2d.set_deferred("disabled", false)
 	Globals.runners -= 1
-
-func _on_timer_timeout() -> void:
-	if Globals.current_energy < Globals.max_energy:
-		Globals.current_energy += (Globals.energy_per_goob * Globals.runners)/3.0
-	elif Globals.current_energy > Globals.max_energy:
-		Globals.current_energy = 100
-	else:
-		pass
