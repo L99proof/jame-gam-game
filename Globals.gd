@@ -5,7 +5,7 @@ extends Node
 func _ready() -> void:
 	pass # Replace with function body.
 var better_pik_num = 0
-var pik_num = 0
+var pik_num = 1
 var drill = 0
 var drill_num = 0
 var better_drill_num = 0

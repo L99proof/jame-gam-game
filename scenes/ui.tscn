@@ -23,8 +23,8 @@ more_pik = NodePath("CollapsibleContainer/VBoxContainer/MorePik")
 drill_label = NodePath("CollapsibleContainer/VBoxContainer/Drill/DrillLabel")
 drill = NodePath("CollapsibleContainer/VBoxContainer/Drill")
 better_drill_label = NodePath("CollapsibleContainer/VBoxContainer/BetterDrill/BetterDrillLabel")
-more_drill_label = NodePath("CollapsibleContainer/VBoxContainer/MoreDrill/MoreDrillLabel")
-more_drill = NodePath("CollapsibleContainer/VBoxContainer/MoreDrill")
+more_drill_label = NodePath("")
+more_drill = NodePath("")
 better_drill = NodePath("CollapsibleContainer/VBoxContainer/BetterDrill")
 tredmill_efficiency_label = NodePath("CollapsibleContainer/VBoxContainer/TredmillEfficiency/TredmillEfficiencyLabel")
 tredmill_efficiency = NodePath("CollapsibleContainer/VBoxContainer/TredmillEfficiency")
@@ -124,19 +124,6 @@ offset_right = 287.0
 offset_bottom = 47.0
 theme = ExtResource("1_nt7q6")
 
-[node name="MoreDrill" type="Button" parent="CollapsibleContainer/VBoxContainer" unique_id=111524957]
-layout_mode = 2
-theme = ExtResource("1_nt7q6")
-text = "More Drills"
-
-[node name="MoreDrillLabel" type="Label" parent="CollapsibleContainer/VBoxContainer/MoreDrill" unique_id=1603851299]
-layout_mode = 0
-offset_left = 225.0
-offset_top = 5.0
-offset_right = 287.0
-offset_bottom = 47.0
-theme = ExtResource("1_nt7q6")
-
 [node name="TredmillEfficiency" type="Button" parent="CollapsibleContainer/VBoxContainer" unique_id=1621211657]
 layout_mode = 2
 theme = ExtResource("1_nt7q6")
@@ -175,7 +162,6 @@ offset_bottom = 31.0
 [connection signal="pressed" from="CollapsibleContainer/VBoxContainer/MorePik" to="." method="_on_more_pik_pressed"]
 [connection signal="pressed" from="CollapsibleContainer/VBoxContainer/Drill" to="." method="_on_drill_pressed"]
 [connection signal="pressed" from="CollapsibleContainer/VBoxContainer/BetterDrill" to="." method="_on_better_drill_pressed"]
-[connection signal="pressed" from="CollapsibleContainer/VBoxContainer/MoreDrill" to="." method="_on_more_drill_pressed"]
 [connection signal="pressed" from="CollapsibleContainer/VBoxContainer/TredmillEfficiency" to="." method="_on_tredmill_efficiency_pressed"]
 [connection signal="pressed" from="CollapsibleContainer/VBoxContainer/MaxEnergy" to="." method="_on_max_energy_pressed"]
 [connection signal="pressed" from="CollapsibleContainer/OpenClose" to="." method="_on_open_close_pressed"]

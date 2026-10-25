@@ -31,7 +31,6 @@ func _ready() -> void:
 	collapsible.set_folding_direction_preset(CollapsibleContainer.FoldingPreset.PRESET_TOP_WIDE)
 	collapsible.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 	better_drill.visible = false
-	more_drill.visible = false
 	tredmill_efficiency.visible = false
 	max_energy.visible = false
 
@@ -39,10 +38,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	better_pik_label.text = str(Globals.better_pik_num)
-	more_pik_label.text = str(Globals.pik_num)
+	more_pik_label.text = str(Globals.pik_num-1)
 	drill_label.text = str(Globals.drill)
 	better_drill_label.text = str(Globals.better_drill_num)
-	more_drill_label.text = str(Globals.drill_num)
 	tredmill_efficiency_label.text = str(Globals.tred_eff)
 	max_energy_label.text = str((Globals.max_energy/50)-2)
 	
@@ -60,7 +58,6 @@ func _on_more_pik_pressed() -> void:
 func _on_drill_pressed() -> void:
 	Globals.drill += 1
 	if Globals.drill >= 1:
-		more_drill.visible = true
 		better_drill.visible = true
 		tredmill_efficiency.visible = true
 		max_energy.visible = true
@@ -68,11 +65,6 @@ func _on_drill_pressed() -> void:
 
 func _on_better_drill_pressed() -> void:
 	Globals.better_drill_num += 1
-
-
-func _on_more_drill_pressed() -> void:
-	Globals.drill_num += 1
-
 
 func _on_tredmill_efficiency_pressed() -> void:
 	Globals.tred_eff += 1
