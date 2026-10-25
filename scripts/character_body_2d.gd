@@ -146,8 +146,15 @@ func makeMine() -> void:
 	velocity = Vector2(0,0)
 	collision_shape_2d.set_deferred("disabled", true)
 	Globals.miners += 1
-	target_position = Vector2(randf_range(-590,-580),randf_range(-452,-1140))
-
+	target_position = Vector2(randf_range(-590,-580), randf_range(-1140,-452))
+	
+	while mine == true:
+		rotation = deg_to_rad(0)
+		await get_tree().create_timer(0.5).timeout
+		if not mine: 
+			break
+		rotation = deg_to_rad(45)
+		await get_tree().create_timer(0.5).timeout
 
 func stopMine() -> void:
 	mine = false
