@@ -138,6 +138,13 @@ position = Vector2(50, 4.9999995)
 scale = Vector2(2.929688, 3.953125)
 texture = ExtResource("7_wse8f")
 
+[node name="Button" type="Button" parent="solid/guyshape" unique_id=1358040564]
+offset_left = -383.0
+offset_top = -973.0
+offset_right = 389.0
+offset_bottom = 919.0
+flat = true
+
 [node name="drillshape" type="CollisionShape2D" parent="solid" unique_id=1458447829]
 position = Vector2(-1501, -955.00006)
 rotation = 1.6082875
@@ -180,7 +187,7 @@ sprite_frames = SubResource("SpriteFrames_qgddc")
 frame = 2
 frame_progress = 0.90986973
 
-[node name="goob4" parent="." unique_id=1274700675 instance=ExtResource("4_aqk2v")]
+[node name="goob" parent="." unique_id=1274700675 instance=ExtResource("4_aqk2v")]
 position = Vector2(-581, -1140)
 
 [node name="MineStand" type="Area2D" parent="." unique_id=517125244]
@@ -213,6 +220,7 @@ texture = ExtResource("3_tlwt5")
 
 [node name="Timer" type="Timer" parent="." unique_id=71129239]
 
+[connection signal="pressed" from="solid/guyshape/Button" to="." method="_on_button_pressed"]
 [connection signal="body_entered" from="MineStand" to="MineStand" method="_on_body_entered"]
 [connection signal="mouse_entered" from="MineStand" to="MineStand" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MineStand" to="MineStand" method="_on_mouse_exited"]

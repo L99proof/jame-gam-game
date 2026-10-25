@@ -10,9 +10,11 @@ extends Node2D
 @export var treadmill: Area2D
 @export var timer: Timer
 
+var goobs = []
+var press
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	press = 0
 	timer.start()
 	drill.play("default")
 	drill_3.play("default")
@@ -42,3 +44,9 @@ func _on_timer_timeout() -> void:
 		Globals.current_energy = 100
 	else:
 		pass
+
+
+func _on_button_pressed() -> void:
+	goobs.append(preload("res://scenes/goob.tscn").instantiate())
+	add_child(goobs.get(press))
+	press += 1
