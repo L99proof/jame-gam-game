@@ -74,4 +74,4 @@ func _on_button_pressed() -> void:
 			x += 1
 			press += 1
 			can_click = false
-			click_cooldown.start(1)
+			click_cooldown.start(Globals.pik_speed)
