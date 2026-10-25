@@ -231,6 +231,7 @@ collision_mask = 2
 script = ExtResource("8_gbfbk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Treadmill" unique_id=854723447]
+visible = false
 position = Vector2(-1622.965, -53.81)
 sprite_frames = SubResource("SpriteFrames_4gbpf")
 frame = 1
