@@ -17,7 +17,12 @@ extends Control
 @export var max_energy_label: Label
 
 var opencloseuithing = 0
-
+var better_pik_cost = 10
+var more_pik_cost = 10
+var drill_cost = 40
+var better_drill_cost = 10
+var better_tredmill_efficiency_cost = 200
+var max_energy_cost = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -46,28 +51,54 @@ func _process(delta: float) -> void:
 	
 	if Globals.drill == 3:
 		drill.disabled = true
+	if Globals.better_pik_num == 4:
+		better_pik.disabled = true
 
 func _on_better_pik_pressed() -> void:
-	Globals.better_pik_num += 1
+	if Globals.currency >= better_pik_cost:
+		Globals.better_pik_num += 1
+		Globals.pik_speed -= 0.25
+		if Globals.pik_speed == 0:
+			Globals.pik_speed = 0.01
+		better_pik_cost *= 6
 
 
 func _on_more_pik_pressed() -> void:
-	Globals.pik_num += 1
+	if Globals.currency >= more_pik_cost:
+		Globals.pik_num += 1
+		more_pik_cost *= 4
 
 
 func _on_drill_pressed() -> void:
-	Globals.drill += 1
-	if Globals.drill >= 1:
-		better_drill.visible = true
-		tredmill_efficiency.visible = true
-		max_energy.visible = true
+	if Globals.currency >= drill_cost:
+		Globals.drill += 1
+		if Globals.drill == 1:
+			better_drill.visible = true
+			tredmill_efficiency.visible = true
+			max_energy.visible = true
+		drill_cost *= 8
 
 
 func _on_better_drill_pressed() -> void:
-	Globals.better_drill_num += 1
+	if Globals.currency >= better_drill_cost:
+		Globals.better_drill_num += 1
+		Globals.drill_speed -= 0.25
+		if Globals.drill_speed == 0:
+			Globals.drill_speed = 0.01
+		better_drill_cost *=6
+
 
 func _on_tredmill_efficiency_pressed() -> void:
-	Globals.tred_eff += 1
+	if Globals.currency >= better_tredmill_efficiency_cost:
+		Globals.tred_eff += 1
+		Globals.energy_per_goob = 10
+		tredmill_efficiency.disabled = true
+
+
+func _on_max_energy_pressed() -> void:
+	if Globals.currency >= max_energy_cost:
+		Globals.max_energy += 50
+		max_energy_cost *= 2
 
 
 func _on_open_close_pressed() -> void:
@@ -76,7 +107,3 @@ func _on_open_close_pressed() -> void:
 		collapsebutton.set_text("⌃")
 	if opencloseuithing == 1:
 		collapsebutton.set_text("⌄")
-
-
-func _on_max_energy_pressed() -> void:
-	Globals.max_energy += 50

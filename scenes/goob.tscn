@@ -119,7 +119,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tv4mw"]
 size = Vector2(70, 72)
 
-[node name="goob" type="CharacterBody2D" unique_id=33472376 node_paths=PackedStringArray("ray_cast_left", "ray_cast_down", "ray_cast_up", "ray_cast_right", "collision_shape_2d", "area_2d", "goob_sprite")]
+[node name="goob" type="CharacterBody2D" unique_id=33472376 node_paths=PackedStringArray("ray_cast_left", "ray_cast_down", "ray_cast_up", "ray_cast_right", "collision_shape_2d", "area_2d", "goob_sprite") groups=["goobs"]]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 2

@@ -5,16 +5,9 @@
 [ext_resource type="Script" uid="uid://btlh4wrv04rc3" path="res://addons/collapsible_container/collapsible_elements/collapsible_container.gd" id="3_gdt2y"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://sprites/icon.svg" id="4_wm3ai"]
 
-[node name="UI" type="Control" unique_id=464854239 node_paths=PackedStringArray("better_pik_label", "better_pik", "more_pik_label", "more_pik", "drill_label", "drill", "better_drill_label", "more_drill_label", "more_drill", "better_drill", "tredmill_efficiency_label", "tredmill_efficiency", "collapsebutton", "collapsible", "max_energy", "max_energy_label")]
+[node name="UI" type="Control" unique_id=464854239 node_paths=PackedStringArray("better_pik_label", "better_pik", "more_pik_label", "more_pik", "drill_label", "drill", "better_drill_label", "better_drill", "tredmill_efficiency_label", "tredmill_efficiency", "collapsebutton", "collapsible", "max_energy", "max_energy_label")]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 1.0
-offset_right = -881.0
-offset_bottom = -207.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 script = ExtResource("1_x4jx1")
 better_pik_label = NodePath("CollapsibleContainer/VBoxContainer/BetterPik/BetterPikLabel")
 better_pik = NodePath("CollapsibleContainer/VBoxContainer/BetterPik")
@@ -23,8 +16,6 @@ more_pik = NodePath("CollapsibleContainer/VBoxContainer/MorePik")
 drill_label = NodePath("CollapsibleContainer/VBoxContainer/Drill/DrillLabel")
 drill = NodePath("CollapsibleContainer/VBoxContainer/Drill")
 better_drill_label = NodePath("CollapsibleContainer/VBoxContainer/BetterDrill/BetterDrillLabel")
-more_drill_label = NodePath("")
-more_drill = NodePath("")
 better_drill = NodePath("CollapsibleContainer/VBoxContainer/BetterDrill")
 tredmill_efficiency_label = NodePath("CollapsibleContainer/VBoxContainer/TredmillEfficiency/TredmillEfficiencyLabel")
 tredmill_efficiency = NodePath("CollapsibleContainer/VBoxContainer/TredmillEfficiency")

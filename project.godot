@@ -36,6 +36,7 @@ enabled=PackedStringArray("res://addons/collapsible_container/plugin.cfg")
 [global_group]
 
 walls=""
+goobs=""
 
 [input]
 

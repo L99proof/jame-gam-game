@@ -75,3 +75,11 @@ func _on_button_pressed() -> void:
 			press += 1
 			can_click = false
 			click_cooldown.start(Globals.pik_speed)
+
+
+func _on_sell_button_pressed() -> void:
+	for child in get_children():
+		if child is CharacterBody2D:
+			if not child.run and not child.mine:
+				child.queue_free()
+				Globals.currency += 1

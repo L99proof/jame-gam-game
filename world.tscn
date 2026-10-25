@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://d0wwjufvxb4yt" path="res://sprites/drill1.png" id="8_hiqwa"]
 [ext_resource type="Texture2D" uid="uid://dcbtqn0x5ybwf" path="res://sprites/drill2.png" id="9_2u3nc"]
 [ext_resource type="Texture2D" uid="uid://bav16pns2nwbs" path="res://sprites/drill3.png" id="10_udxuc"]
+[ext_resource type="Script" uid="uid://c6pwwdryspep5" path="res://sellspot.gd" id="15_2u3nc"]
+[ext_resource type="Texture2D" uid="uid://d0xg7xu30x8fj" path="res://sprites/placeholder sell spot.png" id="16_udxuc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4gbpf"]
 shader = ExtResource("5_ic0uy")
@@ -52,6 +54,9 @@ size = Vector2(129, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjpuc"]
 size = Vector2(539.6804, 290.3444)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43y88"]
+size = Vector2(500, 500)
 
 [node name="World" type="Node2D" unique_id=2085603094 node_paths=PackedStringArray("drillshape", "drill", "drillshape_2", "drill_2", "drillshape_3", "drill_3", "treadshape", "tredmill", "treadmill", "timer", "click_cooldown")]
 y_sort_enabled = true
@@ -102,10 +107,10 @@ layer = 2
 
 [node name="UI" parent="CanvasLayer" unique_id=464854239 instance=ExtResource("1_f3sb7")]
 z_index = 100
-offset_left = 274.0
-offset_top = -324.0
-offset_right = 274.0
-offset_bottom = -324.0
+offset_left = 883.0
+offset_top = -6.0
+offset_right = 883.0
+offset_bottom = -6.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1013682925]
@@ -189,7 +194,7 @@ frame = 2
 frame_progress = 0.90986973
 
 [node name="goob" parent="." unique_id=1274700675 instance=ExtResource("4_aqk2v")]
-position = Vector2(-1695, -550)
+position = Vector2(-7, 6)
 
 [node name="MineStand" type="Area2D" parent="." unique_id=517125244]
 collision_mask = 2
@@ -223,6 +228,27 @@ texture = ExtResource("3_tlwt5")
 
 [node name="click cooldown" type="Timer" parent="." unique_id=950947812]
 
+[node name="sellspot" type="Area2D" parent="." unique_id=1259541234]
+collision_mask = 2
+script = ExtResource("15_2u3nc")
+
+[node name="sellshape" type="CollisionShape2D" parent="sellspot" unique_id=909493216]
+position = Vector2(740, -1591)
+shape = SubResource("RectangleShape2D_43y88")
+
+[node name="Sprite2D" type="Sprite2D" parent="sellspot/sellshape" unique_id=228253311]
+position = Vector2(1, -50)
+texture = ExtResource("16_udxuc")
+
+[node name="sellButton" type="Button" parent="." unique_id=305058716]
+z_index = 1
+offset_left = 487.0
+offset_top = -1936.0
+offset_right = 990.0
+offset_bottom = -1835.0
+tooltip_text = "sell all"
+flat = true
+
 [connection signal="pressed" from="solid/guyshape/Button" to="." method="_on_button_pressed"]
 [connection signal="body_entered" from="MineStand" to="MineStand" method="_on_body_entered"]
 [connection signal="mouse_entered" from="MineStand" to="MineStand" method="_on_mouse_entered"]
@@ -232,3 +258,6 @@ texture = ExtResource("3_tlwt5")
 [connection signal="mouse_exited" from="Treadmill" to="Treadmill" method="_on_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="click cooldown" to="." method="_on_click_cooldown_timeout"]
+[connection signal="body_entered" from="sellspot" to="sellspot" method="_on_body_entered"]
+[connection signal="body_exited" from="sellspot" to="sellspot" method="_on_body_exited"]
+[connection signal="pressed" from="sellButton" to="." method="_on_sell_button_pressed"]
