@@ -26,4 +26,3 @@ func _process(delta: float) -> void:
 			if guy.drag == false and Globals.miners<Globals.pik_num:
 				can_drop = false
 				guy.makeMine()
-				print(3)

@@ -176,9 +176,7 @@ func stopRun() -> void:
 func _on_timer_timeout() -> void:
 	if Globals.current_energy < Globals.max_energy:
 		Globals.current_energy += (Globals.energy_per_goob * Globals.runners)/3.0
-		print(Globals.current_energy)
 	elif Globals.current_energy > Globals.max_energy:
 		Globals.current_energy = 100
 	else:
 		pass
-	print(Globals.current_energy)
