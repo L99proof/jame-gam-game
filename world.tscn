@@ -74,6 +74,8 @@ size = Vector2(539.6804, 290.3444)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43y88"]
 size = Vector2(500, 500)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vddbn"]
+
 [node name="World" type="Node2D" unique_id=2085603094 node_paths=PackedStringArray("drillshape", "drill", "drillshape_2", "drill_2", "drillshape_3", "drill_3", "treadshape", "tredmill", "treadmill", "timer", "click_cooldown", "drill_time")]
 y_sort_enabled = true
 script = ExtResource("1_dwbse")
@@ -266,10 +268,17 @@ offset_left = 654.0
 offset_top = -698.0
 offset_right = 1157.0
 offset_bottom = -597.0
-tooltip_text = "sell all"
+tooltip_text = "click me"
 flat = true
 
 [node name="drillTime" type="Timer" parent="." unique_id=1224390071]
+
+[node name="Label" type="Label" parent="." unique_id=1466015725]
+offset_left = 293.0
+offset_top = -1349.0
+offset_right = 433.0
+offset_bottom = -1304.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_vddbn")
 
 [connection signal="pressed" from="solid/guyshape/Button" to="." method="_on_button_pressed"]
 [connection signal="body_entered" from="MineStand" to="MineStand" method="_on_body_entered"]
