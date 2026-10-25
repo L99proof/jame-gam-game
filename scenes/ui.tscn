@@ -4,8 +4,9 @@
 [ext_resource type="Script" uid="uid://htyirh56y5bx" path="res://scripts/ui.gd" id="1_x4jx1"]
 [ext_resource type="Script" uid="uid://btlh4wrv04rc3" path="res://addons/collapsible_container/collapsible_elements/collapsible_container.gd" id="3_gdt2y"]
 [ext_resource type="Texture2D" uid="uid://d2hvijcruw5yx" path="res://sprites/UIback.png" id="3_wm3ai"]
+[ext_resource type="Texture2D" uid="uid://b85836cqkcj7w" path="res://sprites/coin.png" id="5_wm3ai"]
 
-[node name="UI" type="Control" unique_id=464854239 node_paths=PackedStringArray("better_pik_label", "better_pik", "more_pik_label", "more_pik", "drill_label", "drill", "better_drill_label", "better_drill", "tredmill_efficiency_label", "tredmill_efficiency", "collapsebutton", "collapsible", "max_energy", "max_energy_label")]
+[node name="UI" type="Control" unique_id=464854239 node_paths=PackedStringArray("better_pik_label", "better_pik", "more_pik_label", "more_pik", "drill_label", "drill", "better_drill_label", "better_drill", "tredmill_efficiency_label", "tredmill_efficiency", "collapsebutton", "collapsible", "max_energy", "max_energy_label", "total")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_x4jx1")
@@ -23,6 +24,7 @@ collapsebutton = NodePath("CollapsibleContainer/OpenClose")
 collapsible = NodePath("CollapsibleContainer")
 max_energy = NodePath("CollapsibleContainer/VBoxContainer/MaxEnergy")
 max_energy_label = NodePath("CollapsibleContainer/VBoxContainer/MaxEnergy/MaxEnergyLabel")
+total = NodePath("Total")
 
 [node name="CollapsibleContainer" type="Control" parent="." unique_id=1097302173]
 process_mode = 3
@@ -155,6 +157,24 @@ offset_left = 93.0
 offset_top = 1.999999
 offset_right = 223.0
 offset_bottom = 33.0
+
+[node name="Total" type="Label" parent="." unique_id=1830569752]
+layout_mode = 0
+offset_left = -838.0
+offset_top = 4.0
+offset_right = -657.0
+offset_bottom = 46.0
+theme = ExtResource("1_nt7q6")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Total" unique_id=790314847]
+layout_mode = 0
+offset_left = -26.0
+offset_top = -32.0
+offset_right = 80.0
+offset_bottom = 87.0
+texture = ExtResource("5_wm3ai")
+expand_mode = 1
 
 [connection signal="pressed" from="CollapsibleContainer/VBoxContainer/BetterPik" to="." method="_on_better_pik_pressed"]
 [connection signal="pressed" from="CollapsibleContainer/VBoxContainer/MorePik" to="." method="_on_more_pik_pressed"]

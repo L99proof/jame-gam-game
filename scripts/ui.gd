@@ -15,6 +15,7 @@ extends Control
 @export var collapsible: CollapsibleContainer
 @export var max_energy: Button
 @export var max_energy_label: Label
+@export var total: Label
 
 var opencloseuithing = 0
 var better_pik_cost = 10
@@ -42,6 +43,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	total.text = str(Globals.currency)
 	better_pik_label.text = str(better_pik_cost)
 	more_pik_label.text = str(more_pik_cost)
 	drill_label.text = str(drill_cost)
