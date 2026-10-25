@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://d0wwjufvxb4yt" path="res://sprites/drill1.png" id="8_hiqwa"]
 [ext_resource type="Texture2D" uid="uid://dcbtqn0x5ybwf" path="res://sprites/drill2.png" id="9_2u3nc"]
 [ext_resource type="Texture2D" uid="uid://bav16pns2nwbs" path="res://sprites/drill3.png" id="10_udxuc"]
+[ext_resource type="Texture2D" uid="uid://rspi8w2jhg48" path="res://sprites/pcikstand.png" id="13_2u3nc"]
 [ext_resource type="Script" uid="uid://c6pwwdryspep5" path="res://sellspot.gd" id="15_2u3nc"]
 [ext_resource type="Texture2D" uid="uid://d0xg7xu30x8fj" path="res://sprites/placeholder sell spot.png" id="16_udxuc"]
 
@@ -50,7 +51,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65g8g"]
-size = Vector2(129, 128)
+size = Vector2(223, 253)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjpuc"]
 size = Vector2(539.6804, 290.3444)
@@ -198,16 +199,17 @@ frame_progress = 0.90986973
 position = Vector2(-7, 6)
 
 [node name="MineStand" type="Area2D" parent="." unique_id=517125244]
+position = Vector2(-90, -824)
 collision_mask = 2
 script = ExtResource("7_pkg7o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MineStand" unique_id=1088298393]
-position = Vector2(454.5, -333)
+position = Vector2(443.5, -330.5)
 shape = SubResource("RectangleShape2D_65g8g")
 
 [node name="pickaxeStand" type="Sprite2D" parent="MineStand" unique_id=1836593163]
 position = Vector2(455, -333)
-texture = ExtResource("3_tlwt5")
+texture = ExtResource("13_2u3nc")
 
 [node name="Treadmill" type="Area2D" parent="." unique_id=1385500601]
 collision_mask = 2
@@ -230,6 +232,7 @@ texture = ExtResource("3_tlwt5")
 [node name="click cooldown" type="Timer" parent="." unique_id=950947812]
 
 [node name="sellspot" type="Area2D" parent="." unique_id=1259541234]
+position = Vector2(155, 1239)
 collision_mask = 2
 script = ExtResource("15_2u3nc")
 

@@ -6,7 +6,7 @@ extends Node2D
 @export var drillshape_3: CollisionShape2D
 @export var drill_3: AnimatedSprite2D
 @export var treadshape: CollisionShape2D
-@export var tredmill: Sprite2D
+@export var tredmill: AnimatedSprite2D
 @export var treadmill: Area2D
 @export var timer: Timer
 @export var click_cooldown: Timer

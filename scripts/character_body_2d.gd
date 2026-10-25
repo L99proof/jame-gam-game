@@ -21,6 +21,7 @@ var shirt = "Blue"
 @export var pace_small_size:float = 100
 @export var pace_big_size:float = 300 
 @export var da_friction:float = 4
+@export var tredmill: AnimatedSprite2D
 
 var SPEED:float
 var home_position                  
@@ -170,6 +171,7 @@ func makeRun() -> void:
 	collision_shape_2d.set_deferred("disabled", true)
 	position = Vector2(randi_range(-1856,-1405), randi_range(-150,55))
 	Globals.runners += 1
+
 
 func stopRun() -> void:
 	run = false
