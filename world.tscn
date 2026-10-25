@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://d0nhl0c06ortq" path="res://world.gd" id="1_dwbse"]
 [ext_resource type="PackedScene" uid="uid://djf7keuxeyyoh" path="res://scenes/ui.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://dhle5ahad4cse" path="res://scripts/cameramove.gd" id="2_tlwt5"]
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://sprites/icon.svg" id="3_tlwt5"]
 [ext_resource type="Texture2D" uid="uid://c00epib6hsc1h" path="res://sprites/stone2.jpg" id="4_70uel"]
 [ext_resource type="PackedScene" uid="uid://dmaa8vb3g4j4u" path="res://scenes/goob.tscn" id="4_aqk2v"]
 [ext_resource type="Shader" uid="uid://cg7vwiev5uuur" path="res://world.gdshader" id="5_ic0uy"]
@@ -15,8 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://dcbtqn0x5ybwf" path="res://sprites/drill2.png" id="9_2u3nc"]
 [ext_resource type="Texture2D" uid="uid://bav16pns2nwbs" path="res://sprites/drill3.png" id="10_udxuc"]
 [ext_resource type="Texture2D" uid="uid://rspi8w2jhg48" path="res://sprites/pcikstand.png" id="13_2u3nc"]
-[ext_resource type="Script" uid="uid://c6pwwdryspep5" path="res://sellspot.gd" id="15_2u3nc"]
-[ext_resource type="Texture2D" uid="uid://d0xg7xu30x8fj" path="res://sprites/placeholder sell spot.png" id="16_udxuc"]
+[ext_resource type="Texture2D" uid="uid://clisgjdm4r45b" path="res://sprites/Trdml1.png" id="15_2u3nc"]
+[ext_resource type="Texture2D" uid="uid://ctaxghuqtfeqk" path="res://sprites/Trdml2.png" id="16_udxuc"]
+[ext_resource type="Script" uid="uid://c6pwwdryspep5" path="res://sellspot.gd" id="17_ikiii"]
+[ext_resource type="Texture2D" uid="uid://d0xg7xu30x8fj" path="res://sprites/placeholder sell spot.png" id="18_cbp6q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4gbpf"]
 shader = ExtResource("5_ic0uy")
@@ -53,6 +54,20 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65g8g"]
 size = Vector2(223, 253)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_4gbpf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_2u3nc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_udxuc")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjpuc"]
 size = Vector2(539.6804, 290.3444)
 
@@ -69,7 +84,7 @@ drill_2 = NodePath("solid/drillshape2/AnimatedSprite2D")
 drillshape_3 = NodePath("solid/drillshape3")
 drill_3 = NodePath("solid/drillshape3/AnimatedSprite2D")
 treadshape = NodePath("Treadmill/treadshape")
-tredmill = NodePath("Treadmill/treadshape/tredmill")
+tredmill = NodePath("Treadmill/AnimatedSprite2D")
 treadmill = NodePath("Treadmill")
 timer = NodePath("Timer")
 click_cooldown = NodePath("click cooldown")
@@ -215,17 +230,17 @@ texture = ExtResource("13_2u3nc")
 collision_mask = 2
 script = ExtResource("8_gbfbk")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Treadmill" unique_id=854723447]
+position = Vector2(-1622.965, -53.81)
+sprite_frames = SubResource("SpriteFrames_4gbpf")
+frame = 1
+frame_progress = 0.56524247
+
 [node name="treadshape" type="CollisionShape2D" parent="Treadmill" unique_id=1528399160]
 position = Vector2(-1629, -43)
 rotation = 0.004859478
 shape = SubResource("RectangleShape2D_bjpuc")
 disabled = true
-
-[node name="tredmill" type="Sprite2D" parent="Treadmill/treadshape" unique_id=349309882]
-visible = false
-position = Vector2(-3.1917648, 2.8544502)
-scale = Vector2(4.2371435, 2.2719805)
-texture = ExtResource("3_tlwt5")
 
 [node name="Timer" type="Timer" parent="." unique_id=71129239]
 
@@ -234,7 +249,7 @@ texture = ExtResource("3_tlwt5")
 [node name="sellspot" type="Area2D" parent="." unique_id=1259541234]
 position = Vector2(155, 1239)
 collision_mask = 2
-script = ExtResource("15_2u3nc")
+script = ExtResource("17_ikiii")
 
 [node name="sellshape" type="CollisionShape2D" parent="sellspot" unique_id=909493216]
 position = Vector2(740, -1591)
@@ -242,7 +257,7 @@ shape = SubResource("RectangleShape2D_43y88")
 
 [node name="Sprite2D" type="Sprite2D" parent="sellspot/sellshape" unique_id=228253311]
 position = Vector2(1, -50)
-texture = ExtResource("16_udxuc")
+texture = ExtResource("18_cbp6q")
 
 [node name="sellButton" type="Button" parent="." unique_id=305058716]
 z_index = 1
