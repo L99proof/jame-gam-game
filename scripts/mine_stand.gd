@@ -1,28 +1,23 @@
 extends Area2D
-var can_drop = false
-var guy
+
+var guy: Node2D = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-
-func _on_mouse_entered() -> void:
-	if guy is CharacterBody2D:
-		if guy.drag:
-			can_drop = true
-		else:
-			can_drop = false
-
-func _on_mouse_exited() -> void:
-	can_drop = false
-
 func _on_body_entered(body: Node2D) -> void:
-	guy = body
-	
+	if body is CharacterBody2D:
+		guy = body
+
+func _on_body_exited(body: Node2D) -> void:
+	if body == guy:
+		guy = null
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if can_drop:
-		if guy is CharacterBody2D:
-			if guy.drag == false and Globals.miners<Globals.pik_num:
-				can_drop = false
-				guy.makeMine()
+	if guy is CharacterBody2D:
+		if guy.drag == false and Globals.miners < Globals.pik_num:
+			var miner_guy = guy 
+			guy = null
+			miner_guy.makeMine()
