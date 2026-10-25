@@ -53,7 +53,7 @@ size = Vector2(129, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjpuc"]
 size = Vector2(539.6804, 290.3444)
 
-[node name="World" type="Node2D" unique_id=2085603094 node_paths=PackedStringArray("drillshape", "drill", "drillshape_2", "drill_2", "drillshape_3", "drill_3", "treadshape", "tredmill", "treadmill", "timer")]
+[node name="World" type="Node2D" unique_id=2085603094 node_paths=PackedStringArray("drillshape", "drill", "drillshape_2", "drill_2", "drillshape_3", "drill_3", "treadshape", "tredmill", "treadmill", "timer", "click_cooldown")]
 y_sort_enabled = true
 script = ExtResource("1_dwbse")
 drillshape = NodePath("solid/drillshape")
@@ -66,6 +66,7 @@ treadshape = NodePath("Treadmill/treadshape")
 tredmill = NodePath("Treadmill/treadshape/tredmill")
 treadmill = NodePath("Treadmill")
 timer = NodePath("Timer")
+click_cooldown = NodePath("click cooldown")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1830423451]
 anchors_preset = 8
@@ -188,7 +189,7 @@ frame = 2
 frame_progress = 0.90986973
 
 [node name="goob" parent="." unique_id=1274700675 instance=ExtResource("4_aqk2v")]
-position = Vector2(-581, -1140)
+position = Vector2(-1695, -550)
 
 [node name="MineStand" type="Area2D" parent="." unique_id=517125244]
 collision_mask = 2
@@ -220,6 +221,8 @@ texture = ExtResource("3_tlwt5")
 
 [node name="Timer" type="Timer" parent="." unique_id=71129239]
 
+[node name="click cooldown" type="Timer" parent="." unique_id=950947812]
+
 [connection signal="pressed" from="solid/guyshape/Button" to="." method="_on_button_pressed"]
 [connection signal="body_entered" from="MineStand" to="MineStand" method="_on_body_entered"]
 [connection signal="mouse_entered" from="MineStand" to="MineStand" method="_on_mouse_entered"]
@@ -228,3 +231,4 @@ texture = ExtResource("3_tlwt5")
 [connection signal="mouse_entered" from="Treadmill" to="Treadmill" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Treadmill" to="Treadmill" method="_on_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="click cooldown" to="." method="_on_click_cooldown_timeout"]
