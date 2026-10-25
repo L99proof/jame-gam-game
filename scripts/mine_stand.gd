@@ -8,10 +8,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func _on_mouse_entered() -> void:
-	if guy.drag:
-		can_drop = true
-	else:
-		can_drop = false
+	if guy is CharacterBody2D:
+		if guy.drag:
+			can_drop = true
+		else:
+			can_drop = false
 
 func _on_mouse_exited() -> void:
 	can_drop = false

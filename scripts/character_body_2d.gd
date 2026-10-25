@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var collision_shape_2d: CollisionShape2D
 @export var area_2d: Area2D
 @export var goob_sprite: AnimatedSprite2D
+@export var timer: Timer
 
 var stick = true
 var drag = false
@@ -33,7 +34,7 @@ func _ready() -> void:
 	SPEED = randf_range(LowSpeed, HighSpeed)
 	home_position = global_position
 	choose_new_pace_target()
-	
+	timer.start()
 	if color == 1:
 		shirt = "Blue"
 	elif color == 2:
@@ -50,11 +51,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if drag and not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		release_object()
-
+	
 	if drag:
 		var target_pos = get_global_mouse_position().clamp(limit_min, limit_max)
 		velocity = (target_pos - global_position) / delta
 		global_position = target_pos
+
+
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
@@ -161,9 +164,21 @@ func makeRun() -> void:
 	velocity = Vector2(0,0)
 	collision_shape_2d.set_deferred("disabled", true)
 	position = Vector2(randi_range(-200,-290),300)
+	Globals.runners += 1
 
 func stopRun() -> void:
 	run = false
 	home_position = global_position
 	choose_new_pace_target()
 	collision_shape_2d.set_deferred("disabled", false)
+	Globals.runners -= 1
+
+func _on_timer_timeout() -> void:
+	if Globals.current_energy < Globals.max_energy:
+		Globals.current_energy += (Globals.energy_per_goob * Globals.runners)/3.0
+		print(Globals.current_energy)
+	elif Globals.current_energy > Globals.max_energy:
+		Globals.current_energy = 100
+	else:
+		pass
+	print(Globals.current_energy)
