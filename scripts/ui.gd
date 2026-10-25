@@ -42,12 +42,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	better_pik_label.text = str(Globals.better_pik_num)
-	more_pik_label.text = str(Globals.pik_num-1)
-	drill_label.text = str(Globals.drill)
-	better_drill_label.text = str(Globals.better_drill_num)
-	tredmill_efficiency_label.text = str(Globals.tred_eff)
-	max_energy_label.text = str((Globals.max_energy/50)-2)
+	better_pik_label.text = str(better_pik_cost)
+	more_pik_label.text = str(more_pik_cost)
+	drill_label.text = str(drill_cost)
+	better_drill_label.text = str(better_drill_cost)
+	tredmill_efficiency_label.text = str(better_tredmill_efficiency_cost)
+	max_energy_label.text = str(max_energy_cost)
 	
 	if Globals.drill == 3:
 		drill.disabled = true

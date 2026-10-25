@@ -10,6 +10,7 @@ extends Node2D
 @export var treadmill: Area2D
 @export var timer: Timer
 @export var click_cooldown: Timer
+@export var drill_time: Timer
 
 var goobs = []
 var goobs2 = []
@@ -19,12 +20,13 @@ var press2
 var can_click = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	drill_time.start(Globals.drill_speed)
 	press2 = 0
 	press = 0
 	goobSpawn2.append(Vector2(-1710,-961))
 	goobSpawn2.append(Vector2(-1710,-760))
 	goobSpawn2.append(Vector2(-1695,-550))
-	timer.start()
+	timer.start(1)
 	drill.play("default")
 	drill_3.play("default")
 	drill_2.play("default")
@@ -47,21 +49,13 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	
-	for z in range(0,Globals.drill):
-		if Globals.current_energy >= 50:
-			Globals.current_energy -= 50
-			goobs2.append(preload("res://scenes/goob.tscn").instantiate())
-			goobs2.get(press2).position = goobSpawn2.get(randi_range(0,Globals.drill-1))
-			add_child(goobs2.get(press2))
-			press2 += 1
-		z+=1
 	if Globals.current_energy < Globals.max_energy:
 		Globals.current_energy += (Globals.energy_per_goob * Globals.runners)
 	elif Globals.current_energy > Globals.max_energy:
 		Globals.current_energy = 100
 	else:
 		pass
+	timer.start(1)
 func _on_click_cooldown_timeout() -> void:
 	can_click = true
 
@@ -83,3 +77,15 @@ func _on_sell_button_pressed() -> void:
 			if not child.run and not child.mine:
 				child.queue_free()
 				Globals.currency += 1
+
+
+func _on_drill_time_timeout() -> void:
+	for z in range(0,Globals.drill):
+		if Globals.current_energy >= 50:
+			Globals.current_energy -= 50
+			goobs2.append(preload("res://scenes/goob.tscn").instantiate())
+			goobs2.get(press2).position = goobSpawn2.get(randi_range(0,Globals.drill-1))
+			add_child(goobs2.get(press2))
+			press2 += 1
+		z+=1
+	drill_time.start(Globals.drill_speed)

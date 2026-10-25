@@ -58,7 +58,7 @@ size = Vector2(539.6804, 290.3444)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43y88"]
 size = Vector2(500, 500)
 
-[node name="World" type="Node2D" unique_id=2085603094 node_paths=PackedStringArray("drillshape", "drill", "drillshape_2", "drill_2", "drillshape_3", "drill_3", "treadshape", "tredmill", "treadmill", "timer", "click_cooldown")]
+[node name="World" type="Node2D" unique_id=2085603094 node_paths=PackedStringArray("drillshape", "drill", "drillshape_2", "drill_2", "drillshape_3", "drill_3", "treadshape", "tredmill", "treadmill", "timer", "click_cooldown", "drill_time")]
 y_sort_enabled = true
 script = ExtResource("1_dwbse")
 drillshape = NodePath("solid/drillshape")
@@ -72,6 +72,7 @@ tredmill = NodePath("Treadmill/treadshape/tredmill")
 treadmill = NodePath("Treadmill")
 timer = NodePath("Timer")
 click_cooldown = NodePath("click cooldown")
+drill_time = NodePath("drillTime")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1830423451]
 anchors_preset = 8
@@ -249,6 +250,8 @@ offset_bottom = -1835.0
 tooltip_text = "sell all"
 flat = true
 
+[node name="drillTime" type="Timer" parent="." unique_id=1224390071]
+
 [connection signal="pressed" from="solid/guyshape/Button" to="." method="_on_button_pressed"]
 [connection signal="body_entered" from="MineStand" to="MineStand" method="_on_body_entered"]
 [connection signal="mouse_entered" from="MineStand" to="MineStand" method="_on_mouse_entered"]
@@ -261,3 +264,4 @@ flat = true
 [connection signal="body_entered" from="sellspot" to="sellspot" method="_on_body_entered"]
 [connection signal="body_exited" from="sellspot" to="sellspot" method="_on_body_exited"]
 [connection signal="pressed" from="sellButton" to="." method="_on_sell_button_pressed"]
+[connection signal="timeout" from="drillTime" to="." method="_on_drill_time_timeout"]
