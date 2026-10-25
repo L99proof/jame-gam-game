@@ -111,13 +111,23 @@ func _physics_process(delta: float) -> void:
 			if ray_cast_down.is_colliding() or ray_cast_right.is_colliding() or ray_cast_up.is_colliding() or ray_cast_left.is_colliding():
 				choose_new_pace_target()
 		move_and_slide()
-	if velocity.length() > 5.0:
-		if velocity.x < 0:
-			goob_sprite.flip_h = true
-		elif velocity.x > 0:
-			goob_sprite.flip_h = false
-	else:
-		goob_sprite.animation = "Idle" + shirt
+	if mine == false:
+		if velocity.length() > 5.0:
+			if velocity.x < 0:
+				goob_sprite.flip_h = true
+			elif velocity.x > 0:
+				goob_sprite.flip_h = false
+		else:
+			goob_sprite.animation = "Idle" + shirt
+	elif mine == true:
+		if velocity.length() > 5.0:
+			if velocity.x < 0:
+				goob_sprite.flip_h = true
+			elif velocity.x > 0:
+				goob_sprite.flip_h = false
+		else:
+			goob_sprite.animation = "Idle" + "Mine" + shirt
+		velocity = velocity.move_toward((target_position-global_position),SPEED * 0.5)
 
 func choose_new_pace_target() -> void:
 	var direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
@@ -135,6 +145,8 @@ func makeMine() -> void:
 	velocity = Vector2(0,0)
 	collision_shape_2d.set_deferred("disabled", true)
 	Globals.miners += 1
+	target_position = Vector2(randf_range(-34.5,-35.5),randf_range(-300,-100))
+
 
 func stopMine() -> void:
 	mine = false

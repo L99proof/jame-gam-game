@@ -1,12 +1,18 @@
 [gd_scene format=3 uid="uid://dmaa8vb3g4j4u"]
 
 [ext_resource type="Texture2D" uid="uid://cqvcijm1vrp43" path="res://sprites/goobBlue.png" id="2_bdyj2"]
+[ext_resource type="Texture2D" uid="uid://3wvpoj0tgb6b" path="res://sprites/BlueMiner.png" id="3_n227k"]
 [ext_resource type="Script" uid="uid://difrqw62s02qc" path="res://scripts/character_body_2d.gd" id="3_o0jrb"]
 [ext_resource type="Texture2D" uid="uid://cewgc5nk0y2hp" path="res://sprites/GoobOrange.png" id="3_shjsn"]
 [ext_resource type="Texture2D" uid="uid://c5ko4f72ibipx" path="res://sprites/GoobP.png" id="4_26rk4"]
+[ext_resource type="Texture2D" uid="uid://cg0f5f0q55y4q" path="res://sprites/OrangeMiner.png" id="4_cv0te"]
+[ext_resource type="Texture2D" uid="uid://bnqjx3ktjchy2" path="res://sprites/PMiner.png" id="5_alpvj"]
 [ext_resource type="Texture2D" uid="uid://b06tl58wpx3nn" path="res://sprites/GoobPink.png" id="5_chkmp"]
 [ext_resource type="Texture2D" uid="uid://d3qy1pil7kdlw" path="res://sprites/GoobPurple.png" id="6_0dv5g"]
+[ext_resource type="Texture2D" uid="uid://dws0epxosys7d" path="res://sprites/PinkMiner.png" id="6_6rtfa"]
 [ext_resource type="Texture2D" uid="uid://cuqtk2llfit3l" path="res://sprites/GoobYellow.png" id="7_jtxbp"]
+[ext_resource type="Texture2D" uid="uid://b542qlk5a6ob8" path="res://sprites/PurpleMiner.png" id="7_pfvrj"]
+[ext_resource type="Texture2D" uid="uid://cyavunykv3178" path="res://sprites/YellowMiner.png" id="8_ldw4s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vddbn"]
 size = Vector2(70, 72)
@@ -19,6 +25,54 @@ animations = [{
 }],
 "loop": 1,
 "name": &"IdleBlue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_n227k")
+}],
+"loop": 1,
+"name": &"IdleMineBlue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cv0te")
+}],
+"loop": 1,
+"name": &"IdleMineOrange",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_alpvj")
+}],
+"loop": 1,
+"name": &"IdleMineP",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_6rtfa")
+}],
+"loop": 1,
+"name": &"IdleMinePink",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_pfvrj")
+}],
+"loop": 1,
+"name": &"IdleMinePurple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ldw4s")
+}],
+"loop": 1,
+"name": &"IdleMineYellow",
 "speed": 5.0
 }, {
 "frames": [{
@@ -60,11 +114,6 @@ animations = [{
 "loop": 1,
 "name": &"IdleYellow",
 "speed": 5.0
-}, {
-"frames": [],
-"loop": 1,
-"name": &"WalkingBlue",
-"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tv4mw"]
@@ -72,6 +121,7 @@ size = Vector2(70, 72)
 
 [node name="goob" type="CharacterBody2D" unique_id=33472376 node_paths=PackedStringArray("ray_cast_left", "ray_cast_down", "ray_cast_up", "ray_cast_right", "collision_shape_2d", "area_2d", "goob_sprite")]
 z_index = 1
+y_sort_enabled = true
 collision_layer = 2
 input_pickable = true
 motion_mode = 1
@@ -113,7 +163,7 @@ target_position = Vector2(36, 0)
 position = Vector2(2.9999993, -11.999998)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_6iawg")
-animation = &"WalkingBlue"
+animation = &"IdleMineP"
 autoplay = "IdleBlue"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1198444017]

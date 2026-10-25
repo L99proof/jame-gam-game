@@ -28,6 +28,7 @@ size = Vector2(129, 128)
 size = Vector2(191, 97)
 
 [node name="World" type="Node2D" unique_id=2085603094 node_paths=PackedStringArray("drillshape", "drill", "drillshape_2", "drill_2", "drillshape_3", "drill_3", "treadshape", "tredmill", "treadmill")]
+y_sort_enabled = true
 script = ExtResource("1_dwbse")
 drillshape = NodePath("solid/drillshape")
 drill = NodePath("solid/drillshape/drill")
